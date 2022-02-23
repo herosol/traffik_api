@@ -80,7 +80,7 @@ if ($_SERVER['HTTP_HOST'] != 'localhost') {
 		'username' => 'herosol_saad2',
 		// 'password' => 'k4J!a7O4~l4Y',
 		'password' => ')#fGii+r_0;,',
-		'database' => 'herosol_cmlnew'
+		'database' => 'herosol_traffik_sex'
 	);
 } else {
 	$db['default'] = array(
@@ -88,7 +88,7 @@ if ($_SERVER['HTTP_HOST'] != 'localhost') {
 		'hostname' => 'localhost',
 		'username' => 'root',
 		'password' => '',
-		'database' => 'herosols_cml_new'
+		'database' => 'herosol_traffik_sex'
 	);
 }
 

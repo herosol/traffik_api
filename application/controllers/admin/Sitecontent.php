@@ -14,13 +14,14 @@ class Sitecontent extends Admin_Controller
         $this->data['enable_editor'] = TRUE;
         $this->data['pageView'] = ADMIN . '/site_home';
         if ($vals = $this->input->post()) {
+            // pr($vals);
             $content_row = $this->master->getRow($this->table_name, array('ckey' => 'home'));
             $content_row = unserialize($content_row->code);
 
             if(!is_array($content_row))
                 $content_row = array();
 
-            for($i = 1; $i <= 10; $i++) {
+            for($i = 1; $i <= 11; $i++) {
                 if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
                     
                     $image = upload_file(UPLOAD_PATH.'images/', 'image'.$i);
@@ -33,6 +34,15 @@ class Sitecontent extends Admin_Controller
                     }
                 }
             }
+            if (isset($_FILES["audio"]["name"]) && $_FILES["audio"]["name"] != "") {
+                
+                $image = upload_file(UPLOAD_PATH.'images/', 'audio');
+                if(!empty($image['file_name'])){
+                    if(isset($content_row['audio']))
+                        $this->remove_file(UPLOAD_PATH."images/".$content_row['audio']);
+                    $vals['audio'] = $image['file_name'];
+                }
+            }
 
             $data = serialize(array_merge($content_row, $vals));
             $this->master->save($this->table_name,array('code' => $data),'ckey', 'home');
@@ -42,6 +52,7 @@ class Sitecontent extends Admin_Controller
         }
 
         $this->data['row'] = $this->master->getRow($this->table_name, array('ckey' => 'home'));
+        // pr($this->data['row']);
         $this->data['row'] = unserialize($this->data['row']->code);
         $this->load->view(ADMIN . '/includes/siteMaster', $this->data);
     }

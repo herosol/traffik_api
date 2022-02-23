@@ -47,11 +47,25 @@
                     </li>
                 </ul>
             </li>
-            <li class="opened <?= ($this->uri->segment(2) == 'orders') ? 'active' : '' ?>">
-                <a href="<?= site_url(ADMIN.'/orders') ?>">
+            <li class="opened <?= ($this->uri->segment(2) == 'vlogs') ? 'active' : '' ?>">
+                <a href="<?= site_url(ADMIN.'/vlogs') ?>">
                     <i class="fa fa-file"></i>
-                    <span class="title">Manage Orders</span>
-                    <span class="badge badge-info"><?=new_orders()?></span>
+                    <span class="title">Manage Vlogs</span>
+                    <span class="badge badge-info"></span>
+                </a>
+            </li>
+            <li class="opened <?= ($this->uri->segment(2) == 'events') ? 'active' : '' ?>">
+                <a href="<?= site_url(ADMIN.'/events') ?>">
+                    <i class="fa fa-file"></i>
+                    <span class="title">Manage Events</span>
+                    <span class="badge badge-info"></span>
+                </a>
+            </li>
+            <li class="opened <?= ($this->uri->segment(2) == 'stories') ? 'active' : '' ?>">
+                <a href="<?= site_url(ADMIN.'/stories') ?>">
+                    <i class="fa fa-file"></i>
+                    <span class="title">Manage Stories</span>
+                    <span class="badge badge-info"></span>
                 </a>
             </li>
             <li class="opened <?= ($this->uri->segment(2) == 'invoices') ? 'active' : '' ?>">
@@ -60,81 +74,15 @@
                     <span class="title">Manage Invoices</span>
                 </a>
             </li>
-            <li class=" <?= ($this->uri->segment(2) == 'vendors' || $this->uri->segment(2) == 'individuals') ? ' opened  active' : '' ?>">
-                <a href="javascript:void(0)">
-                    <i class="fa fa-users"></i>
-                    <span class="title">Manage Withdraws</span>
-                    <span class="badge badge-info"><?=new_withdraws_requests()?></span>
-                </a>
-                <ul>
-                    <li class=" <?= ($this->uri->segment(3) == 'vendors') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/withdraws') ?>">
-                        <i class="fa fa-user"></i>
-                            <span class="title">Completed Withdraws</span>
-                        </a>
-                    </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'individuals') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/withdraws/requests') ?>">
-                            <i class="fa fa-user"></i>
-                            <span class="title">Withdraws Requests</span>
-                            <span class="badge badge-info"><?=new_withdraws_requests()?></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class=" <?= ($this->uri->segment(2) == 'pending-proof' || $this->uri->segment(2) == 'rejected-proof' || $this->uri->segment(2) == 'accepted-proof') ? ' opened  active' : '' ?>">
-                <a href="javascript:void(0)">
-                    <i class="entypo-doc-text  "></i>
-                    <span class="title">Manage Delivery Proofs</span>
-                    <span class="badge badge-info"><?=new_delivery_proofs()?></span>
-                </a>
-                <ul>
-                    <li class=" <?= ($this->uri->segment(2) == 'pending-proof') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/pending-proof') ?>">
-                        <i class="entypo-doc-text  "></i>
-                            <span class="title">Pending Proof</span>
-                        </a>
-                    </li>
-                    <li class=" <?= ($this->uri->segment(2) == 'accepted-proof') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/accepted-proof') ?>">
-                            <i class="entypo-doc-text  "></i>
-                            <span class="title">Accepted Proof</span>
-                        </a>
-                    </li>
-                    <li class=" <?= ($this->uri->segment(2) == 'rejected-proof') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/rejected-proof') ?>">
-                            <i class="entypo-doc-text  "></i>
-                            <span class="title">Rejected Proof</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+           
+            
             <li class="opened<?= $this->uri->segment('2') == 'contact' ? ' active' : '' ?>">
                 <a href="<?= site_url(ADMIN.'/contact') ?>">
                     <i class="fa fa-comments"></i>
                     <span class="title">Manage Contacts</span><span class="badge badge-info"><?=new_messages()?></span>
                 </a>
             </li>
-            <li class=" <?= ($this->uri->segment(2) == 'services' || $this->uri->segment(2) == 'sub_services') ? ' opened  active' : '' ?>">
-                <a href="javascript:void(0)">
-                    <i class="fa fa-pagelines  "></i>
-                    <span class="title">Manage Services</span>
-                </a>
-                <ul>
-                    <li class=" <?= ($this->uri->segment(3) == 'services') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/services') ?>">
-                        <i class="fa fa-file"></i>
-                            <span class="title">Services</span>
-                        </a>
-                    </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'sub_services') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/sub_services') ?>">
-                            <i class="entypo-doc-text  "></i>
-                            <span class="title">Sub Services</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            
             <li class=" <?= ($this->uri->segment(2) == 'sitecontent' || $this->uri->segment(2) == 'preferences') ? ' opened  active' : '' ?>">
                 <a href="javascript:void(0)">
                     <i class="fa fa-pagelines  "></i>

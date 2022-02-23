@@ -87,6 +87,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 define('ADMIN', 'admin');
 
 ### UPLOAD PATH CONSTANTS
+defined('UPLOADVIDEO')  OR define('UPLOADVIDEO','./uploads/videos/');
 defined('UPLOAD_PATH')  OR define('UPLOAD_PATH','./uploads/');
 defined('SITE_IMAGES')  OR define('SITE_IMAGES','./uploads/');
 defined('UPLOADIMAGE')  OR define('UPLOADIMAGE','./uploads/');
