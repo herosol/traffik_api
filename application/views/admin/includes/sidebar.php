@@ -89,16 +89,22 @@
                     <span class="title">Manage Pages</span>
                 </a>
                 <ul>
-                    <li class=" <?= ($this->uri->segment(3) == 'landing') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/sitecontent/landing') ?>">
-                            <i class="entypo-doc-text  "></i>
-                            <span class="title">Landing</span>
-                        </a>
-                    </li>
                     <li class=" <?= ($this->uri->segment(3) == 'home') ? ' active' : '' ?>">
                         <a href="<?= site_url(ADMIN.'/sitecontent/home') ?>">
                             <i class="entypo-doc-text  "></i>
                             <span class="title">Home</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'what_is_human_traffiking') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/what_is_human_traffiking') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">What is human traffiking</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'help_and_resources') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/help_and_resources') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Help And Resources</span>
                         </a>
                     </li>
                     <li class=" <?= ($this->uri->segment(3) == 'signin') ? ' active' : '' ?>">
@@ -123,48 +129,6 @@
                         <a href="<?= site_url(ADMIN.'/sitecontent/contact') ?>">
                             <i class="entypo-doc-text  "></i>
                             <span class="title">Contact Us</span>
-                        </a>
-                    </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'about') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/sitecontent/promotions') ?>">
-                            <i class="entypo-doc-text  "></i>
-                            <span class="title">Promotions</span>
-                        </a>
-                    </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'faq') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/sitecontent/faq') ?>">
-                            <i class="entypo-doc-text  "></i>
-                            <span class="title">FAQ's</span>
-                        </a>
-                    </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'service_selection') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/sitecontent/service_selection') ?>">
-                            <i class="entypo-doc-text  "></i>
-                            <span class="title">Service Selection</span>
-                        </a>
-                    </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'available_vendors') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/sitecontent/available_vendors') ?>">
-                            <i class="entypo-doc-text  "></i>
-                            <span class="title">Available Vendors</span>
-                        </a>
-                    </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'vendor_detail') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/sitecontent/vendor_detail') ?>">
-                            <i class="entypo-doc-text  "></i>
-                            <span class="title">Vendor Detail</span>
-                        </a>
-                    </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'booking') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/sitecontent/booking') ?>">
-                            <i class="entypo-doc-text  "></i>
-                            <span class="title">Booking</span>
-                        </a>
-                    </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'impact') ? ' active' : '' ?>">
-                        <a href="<?= site_url(ADMIN.'/sitecontent/impact') ?>">
-                            <i class="entypo-doc-text  "></i>
-                            <span class="title">Impact</span>
                         </a>
                     </li>
                     <li class=" <?= ($this->uri->segment(3) == 'terms_conditions') ? ' active' : '' ?>">
