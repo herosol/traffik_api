@@ -101,10 +101,58 @@
                             <span class="title">What is human traffiking</span>
                         </a>
                     </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'what_is_sex_traffiking') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/what_is_sex_traffiking') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">What is sex traffiking</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'fact_and_stats') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/fact_and_stats') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Facts, And Statistics</span>
+                        </a>
+                    </li>
                     <li class=" <?= ($this->uri->segment(3) == 'help_and_resources') ? ' active' : '' ?>">
                         <a href="<?= site_url(ADMIN.'/sitecontent/help_and_resources') ?>">
                             <i class="entypo-doc-text  "></i>
                             <span class="title">Help And Resources</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'traffik_and_sex') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/traffik_and_sex') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Traffik & Sex</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'national_directory') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/national_directory') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">National Directory</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'current_affairs') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/current_affairs') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Current Affairs</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'rescue_stories') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/rescue_stories') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Rescue Stories</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'share_story') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/share_story') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Share Story</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'project_unit') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/project_unit') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Project Unite</span>
                         </a>
                     </li>
                     <li class=" <?= ($this->uri->segment(3) == 'signin') ? ' active' : '' ?>">
