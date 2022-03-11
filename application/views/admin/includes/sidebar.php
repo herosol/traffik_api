@@ -113,6 +113,24 @@
                             <span class="title">Facts, And Statistics</span>
                         </a>
                     </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'policy_and_legislation') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/policy_and_legislation') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Policy And Legislation</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'corporate_partners') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/corporate_partners') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Corporate Partners</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'start_a_fundraiser') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/start_a_fundraiser') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Start A Fundraiser</span>
+                        </a>
+                    </li>
                     <li class=" <?= ($this->uri->segment(3) == 'help_and_resources') ? ' active' : '' ?>">
                         <a href="<?= site_url(ADMIN.'/sitecontent/help_and_resources') ?>">
                             <i class="entypo-doc-text  "></i>

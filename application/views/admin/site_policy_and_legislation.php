@@ -151,19 +151,32 @@
                                 <textarea name="sec2_right1_right_desc" rows="4" class="form-control ckeditor" ><?= $row['sec2_right1_right_desc'] ?></textarea>
                             </div>
                             <br/>
+                            <?php for($i = 1; $i <= 3; $i++):?>
+                                <div class="col-md-4">
+                                    <label for="sec2_right_tab_heading<?=$i?>" class="control-label"> Heading <span class="symbol required">*</span></label>
+                                    <input type="text" name="sec2_right_tab_heading<?=$i?>" id="sec2_right_tab_heading<?=$i?>" value="<?= $row['sec2_right_tab_heading'.$i] ?>" class="form-control" required>
+                                    <br/>
+                                    <label for="sec2_right_tab_desc<?=$i?>" class="control-label"> Short Detail <span class="symbol required">*</span></label>
+                                    <textarea name="sec2_right_tab_desc<?=$i?>" rows="3" class="form-control ckeditor" ><?= $row['sec2_right_tab_desc'.$i] ?></textarea>
+                                </div>
+                            <?php endfor?>
                         </div>
                     </div>
                 </div>
             </div>                        
 
-            <h3> Last cards Section</h3>
+            <h3> Last Link Section</h3>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <div class="col-md-12">
-                                <label for="last_section_heading" class="control-label">Card Heading <span class="symbol required">*</span></label>
-                                <input type="text" name="last_section_heading" id="last_section_heading" value="<?= $row['last_section_heading'] ?>" class="form-control" required>
+                            <div class="col-md-6">
+                                <label for="last_link_heading" class="control-label">Last Link Heading <span class="symbol required">*</span></label>
+                                <input type="text" name="last_link_heading" id="last_link_heading" value="<?= $row['last_link_heading'] ?>" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="last_link_link" class="control-label">Last Link <span class="symbol required">*</span></label>
+                                <input type="text" name="last_link_link" id="last_link_link" value="<?= $row['last_link_link'] ?>" class="form-control" required>
                             </div>
                         </div>
                     </div>
