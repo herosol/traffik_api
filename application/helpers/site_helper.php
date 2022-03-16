@@ -12,19 +12,25 @@ function get_header()
 
 function get_pages()
 {
-    $page_arr = [
-        1 => 'index',
-        2 => 'faq',
-        3 => 'promotions-offers',
-        4 => 'contact',
-        5 => 'signin',
-        6 => 'signup-as',
-        7 =>' terms-and-conditions',
-        8 => 'blogs',
-        9 => 'impact',
-        10 => 'privacy-policy'
+    return [
+        '/' => 'Home',
+        '/what-is-human-trafficking' => 'What is human trafficking?',
+        '/what-is-sex-trafficking'   => 'What is sex trafficking?',
+        '/fact-and-statistics' => 'Facts, and statistics',
+        '/policy-and-legislation' => 'Policy & legislation',
+        '/help-and-resources' => 'Help and resources',
+        '/traffik-and-sex' => 'Traffik and sex',
+        '/national-directory' => 'National Directory',
+        '/current-affairs' => 'Current Affairs',
+        '/rescue-stories' => 'Rescue Stories',
+        '/share-your-stories' => 'Share Your Story',
+        '/project-unite' => 'Project Unite',
+        '/our-sponsers' => 'Our Sponsors',
+        '/donate-now' => 'Donate Now',
+        '/corporate-partners' => 'Corporate partnerships',
+        '/start-a-fundraiser' => 'Start a fundraiser',
+        '/donate-pay' => 'Donate Now'
     ];
-    return $page_arr;  
 }
 
 function get_sub_service_name($id){

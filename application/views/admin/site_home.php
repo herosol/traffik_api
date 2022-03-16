@@ -117,14 +117,59 @@
                                 <select name="banner_button_link" id="banner_button_link" class="form-control" required>
                                     <option value=''>-- Select --</option>
                                     <?php $pages = get_pages();
-                                    foreach ($pages as $page) { ?>
-                                        <option value="<?= $page ?>" <?= ($row['banner_button_link'] == $page) ? 'selected' : '' ?>> <?= $page ?></option>
+                                    foreach ($pages as $index => $page) { ?>
+                                        <option value="<?= $index ?>" <?= ($row['banner_button_link'] == $index) ? 'selected' : '' ?>> <?= $page ?></option>
                                     <?php
                                     }
                                     ?>
                                 </select>
                             </div>
-                            
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div class="col-md-12">
+                                <div class="panel panel-primary" data-collapsed="0">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            Video Poster
+                                        </div>
+                                        <div class="panel-options">
+                                            <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail" style="max-width: 310px; height: 110px;" data-trigger="fileinput">
+                                                <img src="<?= !empty($row['poster']) ? getImageSrc(UPLOAD_PATH . "images/", $row['poster']) : 'http://placehold.it/3000x1000' ?>" alt="--">
+                                            </div>
+                                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 320px; max-height: 160px; line-height: 6px;"></div>
+                                            <div>
+                                                <span class="btn btn-white btn-file">
+                                                    <span class="fileinput-new">Select image</span>
+                                                    <span class="fileinput-exists">Change</span>
+                                                    <input type="file" name="poster" accept="image/*" <?php if (empty($row['poster'])) {
+                                                                                                            echo 'required=""';
+                                                                                                        } ?>>
+                                                </span>
+                                                <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                    <label for="video" class="control-label">Banner Video <span class="symbol required">*</span></label>
+                                    <input type="file" name="video" id="video" class="form-control" <?php if (empty($row['video'])) {
+                                                                                                            echo 'required=""';
+                                                                                                        } ?>>
+    
+                                    <br/>
+                                    <?php if(!empty($row['video'])): ?>
+                                        <video src="<?= getImageSrc(UPLOAD_PATH . "images/", $row['video'])?>" width="300" controls>
+                                        </video>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -205,8 +250,8 @@
                                 <select name="sec1_button_link" id="sec1_button_link" class="form-control" required>
                                     <option value=''>-- Select --</option>
                                     <?php $pages = get_pages();
-                                    foreach ($pages as $page) { ?>
-                                        <option value="<?= $page ?>" <?= ($row['sec1_button_link'] == $page) ? 'selected' : '' ?>> <?= $page ?></option>
+                                    foreach ($pages as $index => $page) { ?>
+                                        <option value="<?= $index ?>" <?= ($row['sec1_button_link'] == $index) ? 'selected' : '' ?>> <?= $page ?></option>
                                     <?php
                                     }
                                     ?>
@@ -323,7 +368,7 @@
                     <div class="col-md-9">
                         <div class="form-group">
                             <div class="col-md-6">
-                                <label for="sec3_heading" class="control-label"> Tagline <span class="symbol required">*</span></label>
+                                <label for="sec3_tagline" class="control-label"> Tagline <span class="symbol required">*</span></label>
                                 <input type="text" name="sec3_tagline" value="<?= $row['sec3_tagline'] ?>" class="form-control">
                             </div>
                             <div class="col-md-6">
@@ -347,8 +392,8 @@
                                 <select name="section3_button_link" id="section3_button_link" class="form-control" required>
                                     <option value=''>-- Select --</option>
                                     <?php $pages = get_pages();
-                                    foreach ($pages as $page) { ?>
-                                        <option value="<?= $page ?>" <?= ($row['section3_button_link'] == $page) ? 'selected' : '' ?>> <?= $page ?></option>
+                                    foreach ($pages as $index => $page) { ?>
+                                        <option value="<?= $index ?>" <?= ($row['section3_button_link'] == $index) ? 'selected' : '' ?>> <?= $page ?></option>
                                     <?php
                                     }
                                     ?>
@@ -411,11 +456,11 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <label for="sec3_heading" class="control-label"> Audio Heading <span class="symbol required">*</span></label>
+                                <label for="audio_heading" class="control-label"> Audio Heading <span class="symbol required">*</span></label>
                                 <input type="text" name="audio_heading" value="<?= $row['audio_heading'] ?>" class="form-control">
                             </div>
                             <div class="col-md-4">
-                                <label for="sec3_heading" class="control-label"> Audio Tagline <span class="symbol required">*</span></label>
+                                <label for="audio_tagline" class="control-label"> Audio Tagline <span class="symbol required">*</span></label>
                                 <input type="text" name="audio_tagline" value="<?= $row['audio_tagline'] ?>" class="form-control">
                             </div>
                             <div class = "col-md-4">
@@ -576,7 +621,7 @@
             <h2>Sponsors Section</h2>
             <div class="form-group">
                 <div class="col-md-12">
-                    <label for="testimonials_heading" class="control-label"> Heading <span class="symbol required"></span></label>
+                    <label for="sponsors_heading" class="control-label"> Heading <span class="symbol required"></span></label>
                     <input type="text" name="sponsors_heading" id="sponsors_heading" value="<?= $row['sponsors_heading'] ?>" class="form-control">
                 </div>
             </div>

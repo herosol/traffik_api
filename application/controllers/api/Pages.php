@@ -4,296 +4,325 @@ class Pages extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        header('Content-Type: application/json');
         $this->load->model('Pages_model', 'page');
-        $this->load->model('order_model');
-        $this->load->model('OrderD_model', 'orderd_model');
     }
 
-    function landing()
+    function home()
     {
-        $meta = $this->page->getMetaContent('landing');
+        $meta = $this->page->getMetaContent('home');
         $this->data['page_title'] = $meta->page_name;
         $this->data['slug'] = $meta->slug;
-        $data = $this->page->getPageContent('landing');
-        if ($data) {
-            $this->data['content'] = unserialize($data->code);
-            $this->data['meta_desc'] = json_decode($meta->content);
-            $this->load->view('pages/landing', $this->data);
-        } else {
-            show_404();
-        }
-    }
-
-    function promotions()
-    {
-        $meta = $this->page->getMetaContent('promotion');
-        $this->data['page_title'] = $meta->page_name;
-        $this->data['slug'] = $meta->slug;
-        $data = $this->page->getPageContent('promotions');
-        if ($data) {
-            $this->data['content'] = unserialize($data->code);
-            $this->data['meta_desc'] = json_decode($meta->content);
-            $this->data['promos'] = $this->master->get_data_rows('promos', array('status' => '1'));
-
-            $this->load->view('pages/promotions-offers', $this->data);
-        } else {
-            show_404();
-        }
-    }
-
-    function about()
-    {
-        $meta = $this->page->getMetaContent('about_us');
-        $this->data['page_title'] = $meta->page_name;
-        $this->data['slug'] = $meta->slug;
-        $data = $this->page->getPageContent('about_us');
-        if ($data) {
+        $data = $this->page->getPageContent('home');
+        if ($data) 
+        {
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
-            $this->data['blogs'] = $this->master->getRows('blogs', ['status' => '1'], 0, 3, 'DESC');
-            $this->load->view('pages/about', $this->data);
-        } else {
-            show_404();
+            $this->data['partners']  = $this->master->get_data_rows('partners', ['status'=> '1']); 
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
         }
+        exit;
     }
 
-    function faq()
+    function contact_us()
     {
-        $meta = $this->page->getMetaContent('faq');
+        $meta = $this->page->getMetaContent('contact');
         $this->data['page_title'] = $meta->page_name;
         $this->data['slug'] = $meta->slug;
-        $data = $this->page->getPageContent('faq');
-        if ($data) {
-            $this->data['content'] = unserialize($data->code);
-            $this->data['meta_desc'] = json_decode($meta->content);
-            $this->data['general_faqs'] = $this->master->get_data_rows('faqs', array('status' => '1', 'type' => '1'));
-            $this->data['most_faqs'] = $this->master->get_data_rows('faqs', array('status' => '1', 'type' => '0'));
-
-            $this->load->view('pages/faq', $this->data);
-        } else {
-            show_404();
-        }
-    }
-
-    function contact()
-    {
-        if ($vals = $this->input->post()) {
-            $res = array();
-            $res['hide_msg'] = 0;
-            $res['scroll_to_msg'] = 0;
-            $res['status'] = 0;
-            $res['frm_reset'] = 0;
-            $res['redirect_url'] = 0;
-
-            $this->form_validation->set_rules('name', 'Name', 'required');
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-            $this->form_validation->set_rules('subject', 'Subject', 'required');
-            $this->form_validation->set_rules('phone', 'Phone Number', 'required');
-            $this->form_validation->set_rules('msg', 'Message', 'required');
-            // $this->form_validation->set_rules('g-recaptcha-response','Robot','required',array('required'=>'Please verify that you are not robot!'));
-            if ($this->form_validation->run() === FALSE) {
-                $res['status'] = 0;
-                $res['msg'] = validation_errors();
-            } else {
-                $vals['msg'] = html_escape($this->input->post('msg'));
-                /*$secret = RECAPTCHA_SECRET_KEY;
-                $response=json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$vals['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']), true);
-                if($response['success'] == true){*/
-                $vals['created_date'] = date('Y-m-d H:i:s');
-                $vals['status'] = 0;
-                $this->master->save('contact', $vals);
-                $vals['site_email'] = $this->data['site_settings']->site_email;
-                $vals['site_noreply_email'] = $this->data['site_settings']->site_noreply_email;
-                $okmsg = send_email($vals);
-                if ($okmsg) {
-                    $res['msg'] = 'Message send sucessfully!';
-                    $res['status'] = 1;
-                    $res['frm_reset'] = 1;
-                    $res['hide_msg'] = 1;
-                    // $res['redirect_url'] = site_url('contact-us');
-                } else {
-                    $res['msg'] = 'Message send sucessfully!';
-                    $res['status'] = 1;
-                    $res['frm_reset'] = 1;
-                    $res['hide_msg'] = 1;
-                }
-                /*}else{
-                    $res['msg'] = showMsg('error','Please verify that you are not robot!');
-                    $res['redirect_url'] = site_url('contact-us');
-                }*/
-            }
-            exit(json_encode($res));
-        } else {
-            $meta = $this->page->getMetaContent('contact');
-            $this->data['page_title'] = $meta->page_name;
-            $this->data['slug'] = $meta->slug;
-            $data = $this->page->getPageContent('contact');
-            if ($data) {
-                $this->data['content'] =  unserialize($data->code);
-                $this->data['meta_desc'] = json_decode($meta->content);
-                $this->load->view('pages/contact', $this->data);
-            } else {
-                show_404();
-            }
-        }
-    }
-
-    function blog()
-    {
-        /*$meta = $this->page->getMetaContent('blog');
-        $this->data['page_title'] = $meta->page_name;
-        $this->data['slug'] = $meta->slug;
-        $data = $this->page->getPageContent('blog');
-        if ($data) {
+        $data = $this->page->getPageContent('contact');
+        if ($data) 
+        {
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
-            $this->load->view('pages/blog', $this->data);
-        } else {
-            show_404();
-        }*/
-        $this->data['blogs'] = $this->master->getRows('blogs', ['status'=> 1], '', '', 'DESC', 'id');
-        $this->load->view('pages/blog', $this->data);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
     }
 
-    function blog_detail($blogId)
+    function what_is_human_traffiking()
     {
-        $blogId = doDecode($blogId);
-        // $meta = $this->page->getMetaContent('blog');
-        // $this->data['page_title'] = $meta->page_name;
-        // $this->data['slug'] = $meta->slug;
-        // $data = $this->page->getPageContent('blog');
-        // if ($data) {
-        //     $this->data['content'] = unserialize($data->code);
-        //     $this->data['details'] = ($data->full_code);
-        //     $this->data['meta_desc'] = json_decode($meta->content);
-        // } else {
-        //     show_404();
-        // }
-        $this->data['row'] = $this->master->get_data_row('blogs', ['id' => $blogId]);
-        $this->load->view('pages/blog-detail', $this->data);
-    }
-
-    function terms_conditions()
-    {
-        $meta = $this->page->getMetaContent('terms_conditions');
+        $meta = $this->page->getMetaContent('what_is_human_traffiking');
         $this->data['page_title'] = $meta->page_name;
         $this->data['slug'] = $meta->slug;
-        $data = $this->page->getPageContent('terms_conditions');
-        if ($data) {
+        $data = $this->page->getPageContent('what_is_human_traffiking');
+        if ($data) 
+        {
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
-            $this->load->view('pages/terms-and-conditions', $this->data);
-        } else {
-            show_404();
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
         }
+        exit;
     }
 
-    function privacy_policy()
+    function what_is_sex_traffiking()
     {
-        $meta = $this->page->getMetaContent('privacy_policy');
+        $meta = $this->page->getMetaContent('what_is_sex_traffiking');
         $this->data['page_title'] = $meta->page_name;
         $this->data['slug'] = $meta->slug;
-        $data = $this->page->getPageContent('privacy_policy');
-        if ($data) {
+        $data = $this->page->getPageContent('what_is_sex_traffiking');
+        if ($data) 
+        {
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
-            $this->load->view('pages/privacy-policy', $this->data);
-        } else {
-            show_404();
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
         }
+        exit;
     }
 
-    function impact()
+    function fact_and_stats()
     {
-        $meta = $this->page->getMetaContent('impact');
+        $meta = $this->page->getMetaContent('fact_and_stats');
         $this->data['page_title'] = $meta->page_name;
         $this->data['slug'] = $meta->slug;
-        $data = $this->page->getPageContent('impact');
-        if ($data) {
+        $data = $this->page->getPageContent('fact_and_stats');
+        if ($data) 
+        {
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
-            $this->load->view('pages/impact', $this->data);
-        } else {
-            show_404();
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
         }
+        exit;
     }
 
-    function paypal($order_id)
+    function policy_and_legislation()
     {
-        $this->load->library('Paypal_lib');
-        $order_id = intval(doDecode($order_id));
-        // echo $order_id; die;
-        $row = $this->order_model->get_row($order_id);
-        if ($row) {
-            $this->data['post'] = array(
-                "item_name" => "Paypal Payment",
-                "currency" => "GBP",
-                "amount" => order_total_price($order_id),
-                "custom" => $order_id
-            );
-            $notify_url = site_url('order-notify');
-            $this->data['setting'] = array(
-                "website_name" => "" . $this->data['site_settings']->site_name . "",
-                "url" => "" . base_url() . "",
-                "notify_url" => "" . $notify_url . "",
-                "return_url" => "" . base_url() . "success/" . doEncode($order_id),
-                "cancel_url" => "" . base_url() . "cancel",
-            );
-
-            if ($this->data['site_settings']->site_paypal_environment) :
-                $this->data['setting']["sandbox"] = true;
-                $this->data['setting']["sandbox_paypal"] = $this->data['site_settings']->site_sandbox_paypal;
-            else :
-                $this->data['setting']["live_paypal"] = $this->data['site_settings']->site_live_paypal;
-            endif;
-            // pr($this->data);
-            $this->load->view("includes/processing", $this->data);
-        } else
-            exit('Access Denied!');
+        $meta = $this->page->getMetaContent('policy_and_legislation');
+        $this->data['page_title'] = $meta->page_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('policy_and_legislation');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
     }
 
-    function paypal_amended_invoice($order_id)
+    function corporate_partners()
     {
-        $this->load->library('Paypal_lib');
-        $order_id = intval(doDecode($order_id));
-        echo $order_id;
-        die;
-        $row = $this->order_model->get_row($order_id);
-        if ($row) {
-            $this->data['post'] = array(
-                "item_name" => "Paypal Payment",
-                "currency" => "GBP",
-                "amount" => order_total_price($order_id),
-                "custom" => $order_id
-            );
-            $notify_url = site_url('order-notify');
-            $this->data['setting'] = array(
-                "website_name" => "" . $this->data['site_settings']->site_name . "",
-                "url" => "" . base_url() . "",
-                "notify_url" => "" . $notify_url . "",
-                "return_url" => "" . base_url() . "success/" . $order_id,
-                "cancel_url" => "" . base_url() . "cancel/" . $order_id,
-            );
-
-            if ($this->data['site_settings']->site_paypal_environment) :
-                $this->data['setting']["sandbox"] = true;
-                $this->data['setting']["sandbox_paypal"] = $this->data['site_settings']->site_sandbox_paypal;
-            else :
-                $this->data['setting']["live_paypal"] = $this->data['site_settings']->site_live_paypal;
-            endif;
-            // pr($this->data);
-            $this->load->view("includes/processing", $this->data);
-        } else
-            exit('Access Denied!');
+        $meta = $this->page->getMetaContent('corporate_partners');
+        $this->data['page_title'] = $meta->page_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('corporate_partners');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
     }
 
-    function error()
+    function start_a_fundraiser()
     {
-        $this->load->view('pages/404', $this->data);
+        $meta = $this->page->getMetaContent('start_a_fundraiser');
+        $this->data['page_title'] = $meta->page_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('start_a_fundraiser');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
     }
+
+    function help_and_resources()
+    {
+        $meta = $this->page->getMetaContent('help_and_resources');
+        $this->data['page_title'] = $meta->page_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('help_and_resources');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
+    function traffik_and_sex()
+    {
+        $meta = $this->page->getMetaContent('traffik_and_sex');
+        $this->data['page_title'] = $meta->page_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('traffik_and_sex');
+        if ($data) 
+        {
+            $this->data['content']   = unserialize($data->code);
+            $this->data['details']   = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            $this->data['partners']  = $this->master->get_data_rows('partners', ['status'=> '1']); 
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
+    function national_directory()
+    {
+        $meta = $this->page->getMetaContent('national_directory');
+        $this->data['page_title'] = $meta->page_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('national_directory');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
+    function current_affairs()
+    {
+        $meta = $this->page->getMetaContent('current_affairs');
+        $this->data['page_title'] = $meta->page_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('current_affairs');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
+    function rescue_stories()
+    {
+        $meta = $this->page->getMetaContent('rescue_stories');
+        $this->data['page_title'] = $meta->page_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('rescue_stories');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
+    function share_story()
+    {
+        $meta = $this->page->getMetaContent('share_story');
+        $this->data['page_title'] = $meta->page_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('share_story');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
+    function project_unit()
+    {
+        $meta = $this->page->getMetaContent('project_unit');
+        $this->data['page_title'] = $meta->page_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('project_unit');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
 }

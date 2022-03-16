@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="banner_desc" class="control-label"> Card Detail <span class="symbol required">*</span></label>
-                                <textarea name="banner_desc" rows="3" class="form-control" ><?= $row['banner_desc'] ?></textarea>
+                                <textarea name="banner_desc" rows="3" class="form-control ckeditor" ><?= $row['banner_desc'] ?></textarea>
                             </div>
                             
                         </div>
@@ -135,8 +135,8 @@
                                 <select name="sec2_pu_button_link" id="sec2_pu_button_link" class="form-control" required>
                                     <option value=''>-- Select --</option>
                                     <?php $pages = get_pages();
-                                    foreach ($pages as $page) { ?>
-                                        <option value="<?= $page ?>" <?= ($row['sec2_pu_button_link'] == $page) ? 'selected' : '' ?>> <?= $page ?></option>
+                                    foreach ($pages as $index => $page) { ?>
+                                        <option value="<?= $index ?>" <?= ($row['sec2_pu_button_link'] == $index) ? 'selected' : '' ?>> <?= $page ?></option>
                                     <?php
                                     }
                                     ?>

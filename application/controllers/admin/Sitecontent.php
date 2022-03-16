@@ -44,6 +44,27 @@ class Sitecontent extends Admin_Controller
                 }
             }
 
+            if (isset($_FILES["video"]["name"]) && $_FILES["video"]["name"] != "") {
+            
+                $video = upload_file(UPLOAD_PATH.'images/', 'video', 'video');
+                if(!empty($video['file_name'])){
+                    if(isset($content_row['video']))
+                        $this->remove_file(UPLOAD_PATH."images/".$content_row['video']);
+                    $vals['video'] = $video['file_name'];
+                }
+            }
+
+            if (isset($_FILES["poster"]["name"]) && $_FILES["poster"]["name"] != "") {
+                
+                $poster = upload_file(UPLOAD_PATH.'images/', 'poster');
+                generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$poster['file_name'], 700,'thumb_');
+                if(!empty($poster['file_name'])){
+                    if(isset($content_row['poster']))
+                        $this->remove_file(UPLOAD_PATH."images/".$content_row['poster']);
+                    $vals['poster'] = $poster['file_name'];
+                }
+            }
+
             $data = serialize(array_merge($content_row, $vals));
             $this->master->save($this->table_name,array('code' => $data),'ckey', 'home');
             setMsg('success', 'Settings updated successfully !');
@@ -599,17 +620,17 @@ class Sitecontent extends Admin_Controller
             $content_row = unserialize($content_row->code);
             if(!is_array($content_row))
                 $content_row = array();
-            // for($i = 1; $i <= 1; $i++) {
-            //     if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
+            for($i = 1; $i <= 4; $i++) {
+                if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
                     
-            //         $image = upload_file(UPLOAD_PATH.'images/', 'image'.$i);
-            //         if(!empty($image['file_name'])){
-            //             if(isset($content_row['image'.$i]))
-            //                 $this->remove_file(UPLOAD_PATH."images/".$content_row['image'.$i]);
-            //             $vals['image'.$i] = $image['file_name'];
-            //         }
-            //     }
-            // }
+                    $image = upload_file(UPLOAD_PATH.'images/', 'image'.$i);
+                    if(!empty($image['file_name'])){
+                        if(isset($content_row['image'.$i]))
+                            $this->remove_file(UPLOAD_PATH."images/".$content_row['image'.$i]);
+                        $vals['image'.$i] = $image['file_name'];
+                    }
+                }
+            }
             $data = serialize(array_merge($content_row,$vals));
             $this->master->save($this->table_name, array('code' => $data), 'ckey', 'contact');
             setMsg('success', 'Settings updated successfully !');

@@ -77,6 +77,27 @@
                     <input type="text" name="site_youtube" value="<?php if (isset($adminsite_setting->site_youtube)) echo $adminsite_setting->site_youtube; ?>" class="form-control">
                 </div>
             </div>
+
+            <h3><i class="fa fa-bars"></i> Footer Settings</h3>
+            <hr class="hr-short">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="control-label"> Text Below Footer Logo <span class="symbol required"></span></label>
+                    <textarea rows="5" name="site_footer_text" class="form-control"><?php if (isset($adminsite_setting->site_footer_text)) echo ($adminsite_setting->site_footer_text); ?></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="control-label"> Footer First Section</label>
+                    <input type="text" name="footer_first_section_heading" value="<?php if (isset($adminsite_setting->footer_first_section_heading)) echo $adminsite_setting->footer_first_section_heading; ?>" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="control-label"> Footer Second Section</label>
+                    <input type="text" name="footer_second_section_heading" value="<?php if (isset($adminsite_setting->footer_second_section_heading)) echo $adminsite_setting->footer_second_section_heading; ?>" class="form-control">
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
             <h3><i class="fa fa-bars"></i> General Detail</h3>

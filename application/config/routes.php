@@ -53,55 +53,25 @@ $route['default_controller'] = 'index';
 $route['404_override'] = 'pages/error';
 $route['translate_uri_dashes'] = FALSE;
 
-# SITE PAGES
-$route['landing'] = 'pages/landing';
-$route['promotions-offers'] = 'pages/promotions';
-$route['about-us'] = 'pages/about';
-$route['faq'] = 'pages/faq';
-$route['contact'] = 'pages/contact';
-$route['blogs'] = 'blogs/index';
-$route['blog-detail/(:any)/(:any)'] = 'blogs/blog_detail/$1/$2';
-$route['terms-conditions'] = 'pages/terms_conditions';
-$route['privacy-policy'] = 'pages/privacy_policy';
-$route['impact'] = 'pages/impact';
-# AUTHENTICATION PAGES
-$route['signup-as']       = 'index/signup_as';
-$route['(:any)/signup']   = 'index/signup/$1';
-$route['signin']          = 'index/signin';
-$route['forgot-password'] = 'index/forgot_password';
-$route['reset/(:any)']    = 'index/reset/$1';
-$route['reset-password']  = 'index/reset_password';
-$route['resend-email']    = 'index/resend_email';
-$route['verification/(:any)'] = 'index/verification/$1';
-$route['newsletter']          = 'index/newsletter';
+# API ROUTES
+$route['api/home']                      = 'api/pages/home';
+$route['api/what-is-human-trafficking'] = 'api/pages/what_is_human_traffiking';
+$route['api/what-is-sex-trafficking']   = 'api/pages/what_is_sex_traffiking';
+$route['api/facts-and-statistics']      = 'api/pages/fact_and_stats';
+$route['api/policy-and-legislation']    = 'api/pages/policy_and_legislation';
+$route['api/corporate-partners']        = 'api/pages/corporate_partners';
+$route['api/start-a-fundraiser']        = 'api/pages/start_a_fundraiser';
+$route['api/help-and-resources']        = 'api/pages/help_and_resources';
+$route['api/traffik-and-sex']           = 'api/pages/traffik_and_sex';
+$route['api/national-directory']        = 'api/pages/national_directory';
+$route['api/current-affairs']           = 'api/pages/current_affairs';
+$route['api/rescue-stories']            = 'api/pages/rescue_stories';
+$route['api/share-story']               = 'api/pages/share_story';
+$route['api/project-unite']             = 'api/pages/project_unit';
+$route['api/contact-us']                 = 'api/pages/contact_us';
 
-$route['facebook-login']    = 'index/facebook_login';
-$route['facebook-callback'] = 'index/facebook_callback';
-$route['google-login']      = 'index/google_login';
-$route['google-callback']   = 'index/google_callback';
-# VENDOR PAGES
-$route['vendor/dashboard']  = 'vendor/dashboard';
-$route['vendor/notifications']     = 'vendor/notifications';
-$route['vendor/orders']     = 'vendor/orders';
-$route['vendor/order-detail/(:any)'] = 'vendor/order_detail/$1';
-$route['vendor/price-list'] = 'vendor/price_list';
-$route['vendor/facility-hours'] = 'vendor/facility_hours';
-$route['vendor/wallet']         = 'earnings/index';
-$route['vendor/credits']        = 'vendor/credits';
-$route['vendor/bank-accounts']  = 'vendor/bank_accounts';
-# BUYER PAGES
-$route['buyer/dashboard']   = 'buyer/dashboard';
-$route['buyer/notifications']      = 'buyer/notifications';
-$route['buyer/orders']      = 'buyer/orders';
-$route['buyer/credits']     = 'buyer/credits';
-$route['buyer/order-detail/(:any)'] = 'buyer/order_detail/$1';
-$route['buyer/wallet']      = 'buyer/transactions';
 
-# SITE PAGES
-$route['service-selection'] = 'search/service_selection';
-$route['available-vendors'] = 'search/available_vendor';
-$route['vendor-detail/(:any)/(:any)'] = 'search/vendor_detail/$1/$2';
-$route['order-booking/(:any)/(:any)'] = 'booking/index/$1/$2';
+
 # ADMIN
 $route['admin/login']     = 'admin/index/login';
 $route['admin/logout']    = 'admin/index/logout';
@@ -113,14 +83,3 @@ $route['admin/delivery_proof/manage/(:any)'] = 'admin/delivery_proof/manage';
 $route['admin/meta-info/manage'] = 'admin/Meta_info/manage';
 $route['admin/meta-info/manage/(:any)'] = 'admin/Meta_info/manage/$1';
 $route['admin/meta-info/delete/(:any)'] = 'admin/Meta_info/delete/$1';
-
-#PAYPAL
-$route['pay-now/(:num)'] = 'paypal/pay_now/$1';
-$route['success/(:any)'] = 'booking/success/$1';
-$route['cancel']  = 'booking/cancel';
-$route['order-notify']   = 'paypal/order_notify';
-$route['paypal/(:any)']  =  'Pages/paypal/$1';
-$route['paypal-amended-invoice/(:any)'] =  'Pages/paypal_amended_invoice/$1';
-
-$route['order-success/(:any)'] = 'booking/success/$1';
-$route['order-cancel/(:any)']  = 'booking/cancel/$1';
