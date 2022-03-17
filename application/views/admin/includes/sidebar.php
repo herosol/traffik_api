@@ -61,10 +61,17 @@
                     <span class="badge badge-info"></span>
                 </a>
             </li>
-            <li class="opened <?= ($this->uri->segment(2) == 'stories') ? 'active' : '' ?>">
-                <a href="<?= site_url(ADMIN.'/stories') ?>">
+            <li class="opened <?= ($this->uri->segment(2) == 'rescuestories') ? 'active' : '' ?>">
+                <a href="<?= site_url(ADMIN.'/rescuestories') ?>">
                     <i class="fa fa-file"></i>
-                    <span class="title">Manage Stories</span>
+                    <span class="title">Manage Rescue Stories</span>
+                    <span class="badge badge-info"></span>
+                </a>
+            </li>
+            <li class="opened <?= ($this->uri->segment(2) == 'news') ? 'active' : '' ?>">
+                <a href="<?= site_url(ADMIN.'/news') ?>">
+                    <i class="fa fa-file"></i>
+                    <span class="title">Manage News</span>
                     <span class="badge badge-info"></span>
                 </a>
             </li>

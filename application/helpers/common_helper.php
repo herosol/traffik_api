@@ -1207,18 +1207,18 @@ function get_video_link($link)
     // ?autoplay=1&loop=1&rel=0&wmode=transparent
 }
 
-function get_genders($key = '')
-{
-    $ary = array(
-        'Male' => 'Male',
-        'Female' => 'Female',
-        'Coed' => 'Coed'
-    );
-    if (!empty($key))
-        return $ary[$key];
+// function get_genders($key = '')
+// {
+//     $ary = array(
+//         'Male' => 'Male',
+//         'Female' => 'Female',
+//         'Coed' => 'Coed'
+//     );
+//     if (!empty($key))
+//         return $ary[$key];
 
-    return $ary;
-}
+//     return $ary;
+// }
 
 function get_week_days($key = '')
 {

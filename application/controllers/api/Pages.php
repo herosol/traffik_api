@@ -51,6 +51,35 @@ class Pages extends MY_Controller
         exit;
     }
 
+    function save_contact_message()
+    {
+        if($this->input->post())
+        {
+            $res = [];
+            $res['status'] = 0;
+            $res['validationErrors'] = '';
+            
+            $this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[4]|max_length[30]', ['min_length'=> 'Please enter full name.', 'max_length'=> 'Name too long.']);
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+            $this->form_validation->set_rules('message', 'Message', 'trim|required|min_length[10]|max_length[1000]', ['min_length'=> 'Please enter a complete message.', 'max_length'=> '1000 character limit reached.']);
+            if ($this->form_validation->run() === FALSE) {
+                $res['validationErrors'] = validation_errors();
+            }
+            else
+            {
+                $post = html_escape($this->input->post());
+                unset($post['callback']);
+                $is_added = $this->master->save('contact', $post);
+                if($is_added)
+                {
+                    $res['status'] = 1;
+                }
+            }
+            echo json_encode($res);
+            exit;
+        }
+    }
+
     function what_is_human_traffiking()
     {
         $meta = $this->page->getMetaContent('what_is_human_traffiking');

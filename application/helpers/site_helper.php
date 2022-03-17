@@ -33,6 +33,16 @@ function get_pages()
     ];
 }
 
+function get_genders()
+{
+    return ['Male', 'Female', 'Other'];
+}
+
+function get_types_of_traffickings()
+{
+    return ['Sex trafficking', 'Human Trafficking'];
+}
+
 function get_sub_service_name($id){
     $CI = get_instance();
     $service = $CI->master->getRow('sub_services',array('id'=>$id));

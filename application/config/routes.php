@@ -68,7 +68,8 @@ $route['api/current-affairs']           = 'api/pages/current_affairs';
 $route['api/rescue-stories']            = 'api/pages/rescue_stories';
 $route['api/share-story']               = 'api/pages/share_story';
 $route['api/project-unite']             = 'api/pages/project_unit';
-$route['api/contact-us']                 = 'api/pages/contact_us';
+$route['api/contact-us']                = 'api/pages/contact_us';
+$route['api/save-contact-message']      = 'api/pages/save_contact_message';
 
 
 

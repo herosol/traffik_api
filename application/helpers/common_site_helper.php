@@ -36,7 +36,7 @@ function countries()
     return $query->result();
 }
 
-function states_by_country($country_id)
+function states_by_country($country_id = 233)
 {
     global $CI;
     $CI->db->select("id, name");
