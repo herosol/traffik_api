@@ -20,6 +20,7 @@ class Pages extends MY_Controller
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
             $this->data['partners']  = $this->master->get_data_rows('partners', ['status'=> '1']); 
+            $this->data['news']      = $this->master->getRows('news', ['status'=> 1], 0, 4, 'DESC', 'id');
             http_response_code(200);
             echo json_encode($this->data);
         } 
@@ -302,6 +303,31 @@ class Pages extends MY_Controller
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
+            $this->data['rescue_stories'] = $this->master->getRows('rescue_stories', ['status'=> 1], 0, 4, 'DESC', 'id');
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
+    function rescue_story_detail()
+    {
+        $post = $this->input->post();
+        $meta = $this->page->getMetaContent('rescue_story_detail');
+        $this->data['page_title'] = $meta->page_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('rescue_story_detail');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            $this->data['story_detail'] = $this->master->get_data_row('rescue_stories', ['id' => $post['id']]);
+            $this->data['rescue_stories'] = $this->master->getRows('rescue_stories', ['status'=> 1, 'id <>'=> $post['id']], '', '', 'DESC', 'id');
             http_response_code(200);
             echo json_encode($this->data);
         } 

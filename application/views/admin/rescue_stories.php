@@ -249,7 +249,7 @@
                         <td><b><?= $blog->age ?></b></td>
                         <td><b><?= $blog->gender ?></b></td>
                         <td><b><?= $blog->types_of_trafficking ?></b></td>
-                        <td><?php echo $blog->short_description ?></td>
+                        <td><?= $blog->short_description ?></td>
                         <td><b><?=get_active_status($blog->status)?></b></td>
                        <td><b><?= format_date($blog->created_date,'M d Y h:i:s A'); ?></b></td>
                         <td class="text-center">

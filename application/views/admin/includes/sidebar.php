@@ -168,6 +168,12 @@
                             <span class="title">Rescue Stories</span>
                         </a>
                     </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'rescue_story_detail') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/rescue_story_detail') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Rescue Story Detail</span>
+                        </a>
+                    </li>
                     <li class=" <?= ($this->uri->segment(3) == 'share_story') ? ' active' : '' ?>">
                         <a href="<?= site_url(ADMIN.'/sitecontent/share_story') ?>">
                             <i class="entypo-doc-text  "></i>

@@ -66,6 +66,7 @@ $route['api/traffik-and-sex']           = 'api/pages/traffik_and_sex';
 $route['api/national-directory']        = 'api/pages/national_directory';
 $route['api/current-affairs']           = 'api/pages/current_affairs';
 $route['api/rescue-stories']            = 'api/pages/rescue_stories';
+$route['api/rescue-story-detail']            = 'api/pages/rescue_story_detail';
 $route['api/share-story']               = 'api/pages/share_story';
 $route['api/project-unite']             = 'api/pages/project_unit';
 $route['api/contact-us']                = 'api/pages/contact_us';
