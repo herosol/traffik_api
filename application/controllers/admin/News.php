@@ -20,12 +20,12 @@ class News extends Admin_Controller {
         $this->data['settings'] = $this->master->get_data_row('siteadmin');
         $this->data['pageView'] = ADMIN . '/news';
          if ($this->input->post()) {
-            $vals = html_escape($this->input->post());
+            $vals = $this->input->post();
             $content_row = $this->master->get_data_row('news', array('id'=>$this->uri->segment(4)));
 
             if (isset($_FILES["image"]["name"]) && $_FILES["image"]["name"] != "") {
                 $image = upload_file(UPLOAD_PATH.'news/', 'image');
-                generate_thumb(UPLOAD_PATH.'news/',UPLOAD_PATH.'news/',$image['file_name'], 300,'thumb_');
+                generate_thumb(UPLOAD_PATH.'news/',UPLOAD_PATH.'news/',$image['file_name'], 800,'thumb_');
                 if(!empty($image['file_name'])){
                     // if(isset($content_row->image))
                     // // $this->remove_file(UPLOAD_PATH."news/".$content_row->image);
@@ -67,6 +67,8 @@ class News extends Admin_Controller {
                 'video_duration'=>$vals['video_duration'],
                 'image'=>$vals['image'],
                 'status'=>$vals['status'],
+                'is_main'=>$vals['is_main'],
+                'detail'=>$vals['detail'],
                 'created_date'=>$created_date,
             );
             $id = $this->master->save('news', $values, 'id', $this->uri->segment(4));

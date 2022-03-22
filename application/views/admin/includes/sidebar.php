@@ -27,7 +27,7 @@
                     <span class="title">Dashboard</span>
                 </a>
             </li>
-            <li class=" <?= ($this->uri->segment(2) == 'vendors' || $this->uri->segment(2) == 'individuals') ? ' opened  active' : '' ?>">
+            <!-- <li class=" <?= ($this->uri->segment(2) == 'vendors' || $this->uri->segment(2) == 'individuals') ? ' opened  active' : '' ?>">
                 <a href="javascript:void(0)">
                     <i class="fa fa-users"></i>
                     <span class="title">Manage Members</span>
@@ -46,11 +46,11 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="opened <?= ($this->uri->segment(2) == 'vlogs') ? 'active' : '' ?>">
                 <a href="<?= site_url(ADMIN.'/vlogs') ?>">
                     <i class="fa fa-file"></i>
-                    <span class="title">Manage Vlogs</span>
+                    <span class="title">Manage Blogs</span>
                     <span class="badge badge-info"></span>
                 </a>
             </li>
@@ -75,12 +75,12 @@
                     <span class="badge badge-info"></span>
                 </a>
             </li>
-            <li class="opened <?= ($this->uri->segment(2) == 'invoices') ? 'active' : '' ?>">
+            <!-- <li class="opened <?= ($this->uri->segment(2) == 'invoices') ? 'active' : '' ?>">
                 <a href="<?= site_url(ADMIN.'/invoices') ?>">
                     <i class="fa fa-file"></i>
                     <span class="title">Manage Invoices</span>
                 </a>
-            </li>
+            </li> -->
            
             
             <li class="opened<?= $this->uri->segment('2') == 'contact' ? ' active' : '' ?>">
@@ -156,6 +156,30 @@
                             <span class="title">National Directory</span>
                         </a>
                     </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'our_sponsors') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/our_sponsors') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Our Sponsors</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'donate_now') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/donate_now') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Donate Now</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'donate_pay_now') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/donate_pay_now') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Donate Pay Now</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'events_near_you') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/events_near_you') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Events Near You</span>
+                        </a>
+                    </li>
                     <li class=" <?= ($this->uri->segment(3) == 'current_affairs') ? ' active' : '' ?>">
                         <a href="<?= site_url(ADMIN.'/sitecontent/current_affairs') ?>">
                             <i class="entypo-doc-text  "></i>
@@ -172,6 +196,18 @@
                         <a href="<?= site_url(ADMIN.'/sitecontent/rescue_story_detail') ?>">
                             <i class="entypo-doc-text  "></i>
                             <span class="title">Rescue Story Detail</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'blog_detail') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/blog_detail') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Blog Detail</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'news_detail') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/sitecontent/news_detail') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">News Detail</span>
                         </a>
                     </li>
                     <li class=" <?= ($this->uri->segment(3) == 'share_story') ? ' active' : '' ?>">
@@ -210,7 +246,7 @@
                             <span class="title">Contact Us</span>
                         </a>
                     </li>
-                    <li class=" <?= ($this->uri->segment(3) == 'terms_conditions') ? ' active' : '' ?>">
+                    <!-- <li class=" <?= ($this->uri->segment(3) == 'terms_conditions') ? ' active' : '' ?>">
                         <a href="<?= site_url(ADMIN.'/sitecontent/terms_conditions') ?>">
                             <i class="entypo-doc-text  "></i>
                             <span class="title">Terms & Conditions</span>
@@ -221,15 +257,15 @@
                             <i class="entypo-doc-text  "></i>
                             <span class="title">Privacy Policy</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
-            <li class="opened<?= $this->uri->segment('2') == 'testimonials' ? ' active' : '' ?>">
+            <!-- <li class="opened<?= $this->uri->segment('2') == 'testimonials' ? ' active' : '' ?>">
                 <a href="<?= site_url(ADMIN.'/testimonials') ?>">
                     <i class="fa fa-comments"></i>
                     <span class="title">Manage Testimonials</span>
                 </a>
-            </li>
+            </li> -->
             <li class="opened<?= $this->uri->segment('2') == 'partners' ? ' active' : '' ?>">
                 <a href="<?= site_url(ADMIN.'/partners') ?>">
                     <i class="fa fa-comments"></i>
@@ -248,7 +284,7 @@
                     <span class="title">Newsletter</span><span class="badge badge-info"><?=new_subscribers()?></span>
                 </a>
             </li>
-            <li class="opened <?= ($this->uri->segment(2) == 'promos') ? 'active' : '' ?>">
+            <!-- <li class="opened <?= ($this->uri->segment(2) == 'promos') ? 'active' : '' ?>">
                 <a href="<?= site_url(ADMIN.'/promos') ?>">
                     <i class="fa fa-file"></i>
                     <span class="title">Manage Promotions</span>
@@ -265,7 +301,7 @@
                     <i class="fa fa-file"></i>
                     <span class="title">Manage Blogs</span>
                 </a>
-            </li>
+            </li> -->
 
             <li class="opened <?= ($this->uri->segment('2') == 'meta-info') ? 'active' : '' ?>">
                 <a href="<?= site_url(ADMIN.'/meta-info') ?>">
@@ -273,12 +309,12 @@
                     <span class="title">Site Meta</span>
                 </a>
             </li>
-            <li class="opened <?= ($this->uri->segment(2) == 'texts') ? 'active' : '' ?>">
+            <!-- <li class="opened <?= ($this->uri->segment(2) == 'texts') ? 'active' : '' ?>">
                 <a href="<?= site_url(ADMIN) ?>/texts">
                     <i class="fa fa-cog"></i>
                     <span class="title">Manage Notifications</span>
                 </a>
-            </li>
+            </li> -->
             <li class="opened <?= ($this->uri->segment(2) == 'settings' && $this->uri->segment(3) == '') ? 'active' : '' ?>">
                 <a href="<?= site_url(ADMIN.'/settings') ?>">
                     <i class="fa fa-cogs"></i>

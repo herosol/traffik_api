@@ -52,10 +52,6 @@
                                 <label for="banner_heading" class="control-label">Banner Heading <span class="symbol required">*</span></label>
                                 <input type="text" name="banner_heading" id="banner_heading" value="<?= $row['banner_heading'] ?>" class="form-control" required>
                             </div>
-                            <div class="col-md-12">
-                                <label for="banner_desc" class="control-label"> Banner Detail <span class="symbol required">*</span></label>
-                                <textarea name="banner_desc" rows="3" class="form-control ckeditor" ><?= $row['banner_desc'] ?></textarea>
-                            </div>
                             <div class="col-md-6">
                                 <label for="banner_button_title" class="control-label">Button Text<span class="symbol required">*</span></label>
                                 <input type="text" name="banner_button_title" id="banner_button_title" value="<?= $row['banner_button_title'] ?>" class="form-control" required>
@@ -65,8 +61,8 @@
                                 <select name="banner_button_link" id="banner_button_link" class="form-control" required>
                                     <option value=''>-- Select --</option>
                                     <?php $pages = get_pages();
-                                    foreach ($pages as $page) { ?>
-                                        <option value="<?= $page ?>" <?= ($row['banner_button_link'] == $page) ? 'selected' : '' ?>> <?= $page ?></option>
+                                    foreach ($pages as $index =>  $page) { ?>
+                                        <option value="<?= $index ?>" <?= ($row['banner_button_link'] == $index) ? 'selected' : '' ?>> <?= $page ?></option>
                                     <?php
                                     }
                                     ?>

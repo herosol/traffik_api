@@ -43,6 +43,32 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="panel panel-primary" data-collapsed="0">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    Form Section Left Image
+                                </div>
+                                <div class="panel-options">
+                                    <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="max-width: 310px; height: 110px;" data-trigger="fileinput">
+                                        <img src="<?= !empty($row['image2']) ? getImageSrc(UPLOAD_PATH . "images/", $row['image2']) : 'http://placehold.it/3000x1000' ?>" alt="--">
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 320px; max-height: 160px; line-height: 6px;"></div>
+                                    <div>
+                                        <span class="btn btn-white btn-file">
+                                            <span class="fileinput-new">Select image</span>
+                                            <span class="fileinput-exists">Change</span>
+                                            <input type="file" name="image2" accept="image/*" <?php if (empty($row['image2'])) {echo 'required=""'; } ?>>
+                                        </span>
+                                        <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-9">
                         <div class="form-group">
@@ -81,7 +107,7 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="section3_detail" class="control-label">  Detail <span class="symbol required">*</span></label>
-                                <textarea name="section3_detail" rows="3" class="form-control ckeditor" ><?= $row['section3_detail'] ?></textarea>
+                                <textarea name="section3_detail" rows="3" class="form-control" ><?= $row['section3_detail'] ?></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -94,8 +120,8 @@
                                 <select name="section3_upper_button_link" id="section3_upper_button_link" class="form-control" required>
                                     <option value=''>-- Select --</option>
                                     <?php $pages = get_pages();
-                                    foreach ($pages as $page) { ?>
-                                        <option value="<?= $page ?>" <?= ($row['section3_upper_button_link'] == $page) ? 'selected' : '' ?>> <?= $page ?></option>
+                                    foreach ($pages as $index => $page) { ?>
+                                        <option value="<?= $index ?>" <?= ($row['section3_upper_button_link'] == $index) ? 'selected' : '' ?>> <?= $page ?></option>
                                     <?php
                                     }
                                     ?>
@@ -112,8 +138,8 @@
                                 <select name="section3_lower_button_link" id="section3_lower_button_link" class="form-control" required>
                                     <option value=''>-- Select --</option>
                                     <?php $pages = get_pages();
-                                    foreach ($pages as $page) { ?>
-                                        <option value="<?= $page ?>" <?= ($row['section3_lower_button_link'] == $page) ? 'selected' : '' ?>> <?= $page ?></option>
+                                    foreach ($pages as $index => $page) { ?>
+                                        <option value="<?= $index ?>" <?= ($row['section3_lower_button_link'] == $index) ? 'selected' : '' ?>> <?= $page ?></option>
                                     <?php
                                     }
                                     ?>

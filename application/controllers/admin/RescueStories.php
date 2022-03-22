@@ -20,7 +20,7 @@ class RescueStories extends Admin_Controller {
         $this->data['settings'] = $this->master->get_data_row('siteadmin');
         $this->data['pageView'] = ADMIN . '/rescue_stories';
          if ($this->input->post()) {
-            $vals = html_escape($this->input->post());
+            $vals = $this->input->post();
             $content_row = $this->master->get_data_row('rescue_stories', array('id'=>$this->uri->segment(4)));
             if (isset($_FILES["image"]["name"]) && $_FILES["image"]["name"] != "") {
                 $image = upload_file(UPLOAD_PATH.'rescue_stories/', 'image');

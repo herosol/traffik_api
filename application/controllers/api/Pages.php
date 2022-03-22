@@ -11,7 +11,7 @@ class Pages extends MY_Controller
     function home()
     {
         $meta = $this->page->getMetaContent('home');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('home');
         if ($data) 
@@ -34,7 +34,7 @@ class Pages extends MY_Controller
     function contact_us()
     {
         $meta = $this->page->getMetaContent('contact');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('contact');
         if ($data) 
@@ -84,7 +84,7 @@ class Pages extends MY_Controller
     function what_is_human_traffiking()
     {
         $meta = $this->page->getMetaContent('what_is_human_traffiking');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('what_is_human_traffiking');
         if ($data) 
@@ -105,7 +105,7 @@ class Pages extends MY_Controller
     function what_is_sex_traffiking()
     {
         $meta = $this->page->getMetaContent('what_is_sex_traffiking');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('what_is_sex_traffiking');
         if ($data) 
@@ -126,7 +126,7 @@ class Pages extends MY_Controller
     function fact_and_stats()
     {
         $meta = $this->page->getMetaContent('fact_and_stats');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('fact_and_stats');
         if ($data) 
@@ -134,6 +134,7 @@ class Pages extends MY_Controller
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
+            $this->data['news']      = $this->master->getRows('news', ['status'=> 1], 0, 4, 'DESC', 'id');
             http_response_code(200);
             echo json_encode($this->data);
         } 
@@ -147,7 +148,7 @@ class Pages extends MY_Controller
     function policy_and_legislation()
     {
         $meta = $this->page->getMetaContent('policy_and_legislation');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('policy_and_legislation');
         if ($data) 
@@ -168,7 +169,7 @@ class Pages extends MY_Controller
     function corporate_partners()
     {
         $meta = $this->page->getMetaContent('corporate_partners');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('corporate_partners');
         if ($data) 
@@ -189,7 +190,7 @@ class Pages extends MY_Controller
     function start_a_fundraiser()
     {
         $meta = $this->page->getMetaContent('start_a_fundraiser');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('start_a_fundraiser');
         if ($data) 
@@ -210,7 +211,7 @@ class Pages extends MY_Controller
     function help_and_resources()
     {
         $meta = $this->page->getMetaContent('help_and_resources');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('help_and_resources');
         if ($data) 
@@ -231,7 +232,7 @@ class Pages extends MY_Controller
     function traffik_and_sex()
     {
         $meta = $this->page->getMetaContent('traffik_and_sex');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('traffik_and_sex');
         if ($data) 
@@ -253,7 +254,7 @@ class Pages extends MY_Controller
     function national_directory()
     {
         $meta = $this->page->getMetaContent('national_directory');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('national_directory');
         if ($data) 
@@ -274,7 +275,7 @@ class Pages extends MY_Controller
     function current_affairs()
     {
         $meta = $this->page->getMetaContent('current_affairs');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('current_affairs');
         if ($data) 
@@ -282,6 +283,11 @@ class Pages extends MY_Controller
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
+            $this->data['news']      = $this->master->getRows('news', ['status'=> 1], 0, 4, 'DESC', 'id');
+            $this->data['blogs']     = $this->master->getRows('vlogs', ['status'=> 1], 0, 4, 'DESC', 'id');
+            $this->data['main_news'] = $this->master->get_data_row('news', ['status'=> 1, 'is_main'=> 1], 0, 1, 'DESC', 'id');
+            $this->data['side_news'] = $this->master->getRows('news', ['status'=> 1, 'is_main <>'=> 1], 0, 3, 'DESC', 'id');
+
             http_response_code(200);
             echo json_encode($this->data);
         } 
@@ -295,7 +301,7 @@ class Pages extends MY_Controller
     function rescue_stories()
     {
         $meta = $this->page->getMetaContent('rescue_stories');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('rescue_stories');
         if ($data) 
@@ -318,7 +324,7 @@ class Pages extends MY_Controller
     {
         $post = $this->input->post();
         $meta = $this->page->getMetaContent('rescue_story_detail');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('rescue_story_detail');
         if ($data) 
@@ -338,10 +344,57 @@ class Pages extends MY_Controller
         exit;
     }
 
+    function blog_detail()
+    {
+        $post = $this->input->post();
+        $meta = $this->page->getMetaContent('blog_detail');
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('blog_detail');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            $this->data['blog_detail'] = $this->master->get_data_row('vlogs', ['id' => $post['id']]);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
+    function news_detail()
+    {
+        $post = $this->input->post();
+        $meta = $this->page->getMetaContent('news_detail');
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('news_detail');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            $this->data['news_detail'] = $this->master->get_data_row('news', ['id' => $post['id']]);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+    
+
     function share_story()
     {
         $meta = $this->page->getMetaContent('share_story');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('share_story');
         if ($data) 
@@ -362,7 +415,7 @@ class Pages extends MY_Controller
     function project_unit()
     {
         $meta = $this->page->getMetaContent('project_unit');
-        $this->data['page_title'] = $meta->page_name;
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
         $this->data['slug'] = $meta->slug;
         $data = $this->page->getPageContent('project_unit');
         if ($data) 
@@ -370,6 +423,91 @@ class Pages extends MY_Controller
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
+    function our_sponsors()
+    {
+        $meta = $this->page->getMetaContent('our_sponsors');
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('our_sponsors');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
+    function donate_now()
+    {
+        $meta = $this->page->getMetaContent('donate_now');
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('donate_now');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
+    function donate_pay_now()
+    {
+        $meta = $this->page->getMetaContent('donate_pay_now');
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('donate_pay_now');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            http_response_code(200);
+            echo json_encode($this->data);
+        } 
+        else
+        {
+            http_response_code(404);
+        }
+        exit;
+    }
+
+    function events_near_you()
+    {
+        $meta = $this->page->getMetaContent('events_near_you');
+        $this->data['page_title'] = $meta->page_name.' - '.$this->data['site_settings']->site_name;
+        $this->data['slug'] = $meta->slug;
+        $data = $this->page->getPageContent('events_near_you');
+        if ($data) 
+        {
+            $this->data['content'] = unserialize($data->code);
+            $this->data['details'] = ($data->full_code);
+            $this->data['meta_desc'] = json_decode($meta->content);
+            $this->data['events'] = $this->master->getRows('events', ['status'=> 1], '', '', 'DESC', 'id');
             http_response_code(200);
             echo json_encode($this->data);
         } 

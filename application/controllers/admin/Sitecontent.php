@@ -274,7 +274,7 @@ class Sitecontent extends Admin_Controller
             if(!is_array($content_row))
                 $content_row = array();
 
-            for($i = 1; $i <= 2; $i++) {
+            for($i = 1; $i <= 3; $i++) {
                 if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
                     
                     $image = upload_file(UPLOAD_PATH.'images/', 'image'.$i);
@@ -386,7 +386,7 @@ class Sitecontent extends Admin_Controller
             if(!is_array($content_row))
                 $content_row = array();
 
-            for($i = 1; $i <= 11; $i++) 
+            for($i = 1; $i <= 22; $i++) 
             {
                 if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
                     
@@ -572,6 +572,82 @@ class Sitecontent extends Admin_Controller
         $this->load->view(ADMIN . '/includes/siteMaster', $this->data);
     }
 
+    public function blog_detail()
+    {
+        $this->data['enable_editor'] = TRUE;
+        $this->data['pageView'] = ADMIN . '/site_blog_detail';
+        if ($vals = $this->input->post()) {
+            $content_row = $this->master->getRow($this->table_name, array('ckey' => 'blog_detail'));
+            $content_row = unserialize($content_row->code);
+
+            if(!is_array($content_row))
+                $content_row = array();
+
+            for($i = 1; $i <= 11; $i++) 
+            {
+                if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
+                    
+                    $image = upload_file(UPLOAD_PATH.'images/', 'image'.$i);
+                    generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$image['file_name'],600,'thumb_');
+                    if(!empty($image['file_name'])){
+                        if(isset($content_row['image'.$i]))
+                            $this->remove_file(UPLOAD_PATH."images/".$content_row['image'.$i]);
+                            $this->remove_file(UPLOAD_PATH."images/thumb_".$content_row['image'.$i]);
+                        $vals['image'.$i] = $image['file_name'];
+                    }
+                }
+            }
+
+            $data = serialize(array_merge($content_row, $vals));
+            $this->master->save($this->table_name,array('code' => $data),'ckey', 'blog_detail');
+            setMsg('success', 'Settings updated successfully !');
+            redirect(ADMIN . "/sitecontent/blog_detail");
+            exit;
+        }
+
+        $this->data['row'] = $this->master->getRow($this->table_name, array('ckey' => 'blog_detail'));
+        $this->data['row'] = unserialize($this->data['row']->code);
+        $this->load->view(ADMIN . '/includes/siteMaster', $this->data);
+    }
+
+    public function news_detail()
+    {
+        $this->data['enable_editor'] = TRUE;
+        $this->data['pageView'] = ADMIN . '/site_news_detail';
+        if ($vals = $this->input->post()) {
+            $content_row = $this->master->getRow($this->table_name, array('ckey' => 'news_detail'));
+            $content_row = unserialize($content_row->code);
+
+            if(!is_array($content_row))
+                $content_row = array();
+
+            for($i = 1; $i <= 11; $i++) 
+            {
+                if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
+                    
+                    $image = upload_file(UPLOAD_PATH.'images/', 'image'.$i);
+                    generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$image['file_name'],600,'thumb_');
+                    if(!empty($image['file_name'])){
+                        if(isset($content_row['image'.$i]))
+                            $this->remove_file(UPLOAD_PATH."images/".$content_row['image'.$i]);
+                            $this->remove_file(UPLOAD_PATH."images/thumb_".$content_row['image'.$i]);
+                        $vals['image'.$i] = $image['file_name'];
+                    }
+                }
+            }
+
+            $data = serialize(array_merge($content_row, $vals));
+            $this->master->save($this->table_name,array('code' => $data),'ckey', 'news_detail');
+            setMsg('success', 'Settings updated successfully !');
+            redirect(ADMIN . "/sitecontent/news_detail");
+            exit;
+        }
+
+        $this->data['row'] = $this->master->getRow($this->table_name, array('ckey' => 'news_detail'));
+        $this->data['row'] = unserialize($this->data['row']->code);
+        $this->load->view(ADMIN . '/includes/siteMaster', $this->data);
+    }
+
     public function share_story()
     {
         $this->data['enable_editor'] = TRUE;
@@ -647,8 +723,158 @@ class Sitecontent extends Admin_Controller
         $this->data['row'] = unserialize($this->data['row']->code);
         $this->load->view(ADMIN . '/includes/siteMaster', $this->data);
     }
+
+    public function our_sponsors()
+    {
+        $this->data['enable_editor'] = TRUE;
+        $this->data['pageView'] = ADMIN . '/site_our_sponsors';
+        if ($vals = $this->input->post()) {
+            $content_row = $this->master->getRow($this->table_name, array('ckey' => 'our_sponsors'));
+            $content_row = unserialize($content_row->code);
+
+            if(!is_array($content_row))
+                $content_row = array();
+
+            for($i = 1; $i <= 9; $i++) 
+            {
+                if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
+                    
+                    $image = upload_file(UPLOAD_PATH.'images/', 'image'.$i);
+                    generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$image['file_name'],600,'thumb_');
+                    if(!empty($image['file_name'])){
+                        if(isset($content_row['image'.$i]))
+                            $this->remove_file(UPLOAD_PATH."images/".$content_row['image'.$i]);
+                            $this->remove_file(UPLOAD_PATH."images/thumb_".$content_row['image'.$i]);
+                        $vals['image'.$i] = $image['file_name'];
+                    }
+                }
+            }
+
+            $data = serialize(array_merge($content_row, $vals));
+            $this->master->save($this->table_name,array('code' => $data),'ckey', 'our_sponsors');
+            setMsg('success', 'Settings updated successfully !');
+            redirect(ADMIN . "/sitecontent/our_sponsors");
+            exit;
+        }
+
+        $this->data['row'] = $this->master->getRow($this->table_name, array('ckey' => 'our_sponsors'));
+        $this->data['row'] = unserialize($this->data['row']->code);
+        $this->load->view(ADMIN . '/includes/siteMaster', $this->data);
+    }
+
+    public function donate_now()
+    {
+        $this->data['enable_editor'] = TRUE;
+        $this->data['pageView'] = ADMIN . '/site_donate_now';
+        if ($vals = $this->input->post()) {
+            $content_row = $this->master->getRow($this->table_name, array('ckey' => 'donate_now'));
+            $content_row = unserialize($content_row->code);
+
+            if(!is_array($content_row))
+                $content_row = array();
+
+            for($i = 1; $i <= 6; $i++) 
+            {
+                if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
+                    
+                    $image = upload_file(UPLOAD_PATH.'images/', 'image'.$i);
+                    generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$image['file_name'],600,'thumb_');
+                    if(!empty($image['file_name'])){
+                        if(isset($content_row['image'.$i]))
+                            $this->remove_file(UPLOAD_PATH."images/".$content_row['image'.$i]);
+                            $this->remove_file(UPLOAD_PATH."images/thumb_".$content_row['image'.$i]);
+                        $vals['image'.$i] = $image['file_name'];
+                    }
+                }
+            }
+
+            $data = serialize(array_merge($content_row, $vals));
+            $this->master->save($this->table_name,array('code' => $data),'ckey', 'donate_now');
+            setMsg('success', 'Settings updated successfully !');
+            redirect(ADMIN . "/sitecontent/donate_now");
+            exit;
+        }
+
+        $this->data['row'] = $this->master->getRow($this->table_name, array('ckey' => 'donate_now'));
+        $this->data['row'] = unserialize($this->data['row']->code);
+        $this->load->view(ADMIN . '/includes/siteMaster', $this->data);
+    }
     
-    
+    public function donate_pay_now()
+    {
+        $this->data['enable_editor'] = TRUE;
+        $this->data['pageView'] = ADMIN . '/site_donate_pay_now';
+        if ($vals = $this->input->post()) {
+            $content_row = $this->master->getRow($this->table_name, array('ckey' => 'donate_pay_now'));
+            $content_row = unserialize($content_row->code);
+
+            if(!is_array($content_row))
+                $content_row = array();
+
+            for($i = 1; $i <= 6; $i++) 
+            {
+                if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
+                    
+                    $image = upload_file(UPLOAD_PATH.'images/', 'image'.$i);
+                    generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$image['file_name'],600,'thumb_');
+                    if(!empty($image['file_name'])){
+                        if(isset($content_row['image'.$i]))
+                            $this->remove_file(UPLOAD_PATH."images/".$content_row['image'.$i]);
+                            $this->remove_file(UPLOAD_PATH."images/thumb_".$content_row['image'.$i]);
+                        $vals['image'.$i] = $image['file_name'];
+                    }
+                }
+            }
+
+            $data = serialize(array_merge($content_row, $vals));
+            $this->master->save($this->table_name,array('code' => $data),'ckey', 'donate_pay_now');
+            setMsg('success', 'Settings updated successfully !');
+            redirect(ADMIN . "/sitecontent/donate_pay_now");
+            exit;
+        }
+
+        $this->data['row'] = $this->master->getRow($this->table_name, array('ckey' => 'donate_pay_now'));
+        $this->data['row'] = unserialize($this->data['row']->code);
+        $this->load->view(ADMIN . '/includes/siteMaster', $this->data);
+    }
+
+    public function events_near_you()
+    {
+        $this->data['enable_editor'] = TRUE;
+        $this->data['pageView'] = ADMIN . '/site_events_near_you';
+        if ($vals = $this->input->post()) {
+            $content_row = $this->master->getRow($this->table_name, array('ckey' => 'events_near_you'));
+            $content_row = unserialize($content_row->code);
+
+            if(!is_array($content_row))
+                $content_row = array();
+
+            for($i = 1; $i <= 6; $i++) 
+            {
+                if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
+                    
+                    $image = upload_file(UPLOAD_PATH.'images/', 'image'.$i);
+                    generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$image['file_name'],600,'thumb_');
+                    if(!empty($image['file_name'])){
+                        if(isset($content_row['image'.$i]))
+                            $this->remove_file(UPLOAD_PATH."images/".$content_row['image'.$i]);
+                            $this->remove_file(UPLOAD_PATH."images/thumb_".$content_row['image'.$i]);
+                        $vals['image'.$i] = $image['file_name'];
+                    }
+                }
+            }
+
+            $data = serialize(array_merge($content_row, $vals));
+            $this->master->save($this->table_name,array('code' => $data),'ckey', 'events_near_you');
+            setMsg('success', 'Settings updated successfully !');
+            redirect(ADMIN . "/sitecontent/events_near_you");
+            exit;
+        }
+
+        $this->data['row'] = $this->master->getRow($this->table_name, array('ckey' => 'events_near_you'));
+        $this->data['row'] = unserialize($this->data['row']->code);
+        $this->load->view(ADMIN . '/includes/siteMaster', $this->data);
+    }
 
     function contact() {
         $this->data['enable_editor'] = TRUE;

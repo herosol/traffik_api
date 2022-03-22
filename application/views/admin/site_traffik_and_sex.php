@@ -35,8 +35,8 @@
                                 <select name="banner_button_link" id="banner_button_link" class="form-control" required>
                                     <option value=''>-- Select --</option>
                                     <?php $pages = get_pages();
-                                    foreach ($pages as $page) { ?>
-                                        <option value="<?= $page ?>" <?= ($row['banner_button_link'] == $page) ? 'selected' : '' ?>> <?= $page ?></option>
+                                    foreach ($pages as $index => $page) { ?>
+                                        <option value="<?= $index ?>" <?= ($row['banner_button_link'] == $index) ? 'selected' : '' ?>> <?= $page ?></option>
                                     <?php
                                     }
                                     ?>
@@ -100,6 +100,45 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <h3> Section 2 </h3>
+            <div class="form-group">
+                <?php for($i = 1; $i <= 10; $i++):?>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="panel panel-primary" data-collapsed="0">
+                                        <div class="panel-heading">
+                                            <div class="panel-title">
+                                                Image
+                                            </div>
+                                            <div class="panel-options">
+                                                <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                <div class="fileinput-new thumbnail" style="max-width: 310px; height: 110px;" data-trigger="fileinput">
+                                                    <img src="<?=get_site_image_src("images", $row['image'.($i+11)]) ?>" alt="--">
+                                                </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 320px; max-height: 160px; line-height: 6px;"></div>
+                                                <div>
+                                                    <span class="btn btn-white btn-file">
+                                                        <span class="fileinput-new">Select image</span>
+                                                        <span class="fileinput-exists">Change</span>
+                                                        <input type="file" name="image<?=($i+11)?>" accept="image/*" <?php if(empty($row['image'.($i+11)])){echo 'required=""';}?>>
+                                                    </span>
+                                                    <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                        <textarea name="sec_image_detail<?=$i?>" rows="3" class="form-control" ><?= $row['sec_image_detail'.$i] ?></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endfor?>
             </div>
             <h3>Section 4</h3>
             <div class="form-group">
@@ -182,8 +221,8 @@
                                 <select name="sec4_left_left_button_link" id="sec4_left_left_button_link" class="form-control" required>
                                     <option value=''>-- Select --</option>
                                     <?php $pages = get_pages();
-                                    foreach ($pages as $page) { ?>
-                                        <option value="<?= $page ?>" <?= ($row['sec4_left_left_button_link'] == $page) ? 'selected' : '' ?>> <?= $page ?></option>
+                                    foreach ($pages as $index => $page) { ?>
+                                        <option value="<?= $index ?>" <?= ($row['sec4_left_left_button_link'] == $index) ? 'selected' : '' ?>> <?= $page ?></option>
                                     <?php
                                     }
                                     ?>
@@ -492,8 +531,8 @@
                             <select name="sec8_button_link" id="sec8_button_link" class="form-control" required>
                                 <option value=''>-- Select --</option>
                                 <?php $pages = get_pages();
-                                foreach ($pages as $page) { ?>
-                                    <option value="<?= $page ?>" <?= ($row['sec8_button_link'] == $page) ? 'selected' : '' ?>> <?= $page ?></option>
+                                foreach ($pages as $index => $page) { ?>
+                                    <option value="<?= $index ?>" <?= ($row['sec8_button_link'] == $index) ? 'selected' : '' ?>> <?= $page ?></option>
                                 <?php
                                 }
                                 ?>

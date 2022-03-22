@@ -2,13 +2,13 @@
 
 	<?= showMsg(); ?>
 
-	<?= getBredcrum(ADMIN, array('#' => 'Add/Update Vlogs')); ?>
+	<?= getBredcrum(ADMIN, array('#' => 'Add/Update Blogs')); ?>
 
 	<div class="row margin-bottom-10">
 
 		<div class="col-md-6">
 
-			<h2 class="no-margin"><i class="entypo-list"></i> Add/Update <strong>Vlogs</strong></h2>
+			<h2 class="no-margin"><i class="entypo-list"></i> Add/Update <strong>Blogs</strong></h2>
 
 		</div>
 
@@ -27,27 +27,7 @@
 		<div class="row col-md-12">
 
 			<form action="" name="frmLocation" role="form" class="form-horizontal" method="post" enctype="multipart/form-data">	
-				<div class="col-md-4">
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <label class="control-label">Video <span class="symbol required">*</span></label><br>
-						<?php if (isset($row->video)): ?>
-							<video width="200"  controls="">
-								<source src="<?= getImageSrc(SITE_IMAGES.'/vlogs/',$row->video); ?>">
-							</video>
-						<?php else: ?>    
-							<img src="<?= base_url()."assets/images/no-image.svg"?>" height = "80"><br>
-						<?php endif ?>
-						<br>
-                        <input type="file" name="video" id="image"  class="form-control file2 inline btn btn-primary" data-label="<i class='fa fa-upload'></i> Browse" />
-                        <div><br />
-                            <!-- <small style = "color:#F00;">* Best resolution is <strong>1200 x 450</strong>.</small><br />
-                            <small style = " color:#F00;">* Allowed formats are <strong>JPG | JPEG | PNG</strong>.</small><br>
-                            <small style = "color:#F00;">* Image size maximum <strong>2MB</strong> allowed.</small> -->
-                        </div>
-                    </div> 
-                </div>
-            </div>
+
             <div class="col-md-4">
             	<div class="col-md-12">
                     <label class="control-label"> Status</label>
@@ -67,7 +47,7 @@
                 </div>
             </div>
             <div class="clearfix"></div>
-            <div class="col-md-5">
+            <div class="col-md-12">
                 <div class="form-group">
                     <div class="col-md-12">
                         <label class="control-label">Poster Image <span class="symbol required">*</span></label><br>
@@ -82,7 +62,7 @@
                     </div> 
                 </div>
             </div>
-			<div class="col-md-7">
+			<div class="col-md-12">
                 <div class="form-group">
                     <div class="col-md-12">
 						<label class="control-label">Vlog Title <span class="symbol required">*</span></label>
@@ -94,15 +74,19 @@
 	               <label class="control-label">Vlog Date <span class="symbol required">*</span></label>
 						<input type="text" class="form-control datepicker" name="date" value="<?=$row->date;?>" placeholder="Date">
                     </div> 
-					<div class="col-md-6">
-	               <label class="control-label">Video Duration <span class="symbol required">*</span></label>
+					<!-- <div class="col-md-6">
+	               		<label class="control-label">Video Duration <span class="symbol required">*</span></label>
 						<input type="text" class="form-control" name="duration" value="<?=$row->duration;?>" placeholder="Duration">
-                    </div> 
+                    </div>  -->
                 </div>
 
             </div>
             <div class="clearfix"></div>
             <div class="form-group">
+				<div class="col-md-12">
+	               <label class="control-label">Vlog Short Description <span class="symbol required">*</span></label>
+	                <textarea class="form-control" rows="5" name="short_description"><?=$row->short_description;?></textarea>
+	            </div>
 	            <div class="col-md-12">
 	               <label class="control-label">Vlog Description <span class="symbol required">*</span></label>
 	                <textarea class="form-control ckeditor" rows="5" name="description"><?=$row->description;?></textarea>
@@ -137,13 +121,13 @@
 
 	<?= showMsg(); ?>
 
-	<?= getBredcrum(ADMIN, array('#' => 'Manage Vlog Images')); ?>
+	<?= getBredcrum(ADMIN, array('#' => 'Manage Blog')); ?>
 
 	<div class="row margin-bottom-10">
 
 		<div class="col-md-6">
 
-			<h2 class="no-margin"><i class="entypo-list"></i> Manage <strong>Vlogs </strong></h2>
+			<h2 class="no-margin"><i class="entypo-list"></i> Manage <strong>Blog </strong></h2>
 
 		</div>
 

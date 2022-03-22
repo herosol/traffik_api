@@ -60,6 +60,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label class="control-label">Detail</label>
+                                                <textarea  rows="8" class="form-control ckeditor" name="detail" required><?=$row->detail?></textarea>
+                                            </div>
+                                        </div>
+                                    </div> 
                                     <div class="clearfix"></div>
                                 </div>
                             </div>                            
@@ -90,6 +98,25 @@
                                           
                                             <label class="btn btn-default btn-off btn-sm <?php if($row->status == 0){echo 'active';}?>">
                                             <input type="radio" value="0" name="status" <?php if($row->status == 0){echo 'checked';}?>><i class="fa fa-times" aria-hidden="true"></i></label>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading col-md-12" style="padding: 5.5px 10px"><i class="fa fa-eye" aria-hidden="true"></i> Is Main</div>
+                                <div class="panel-body" style="padding: 15.5px 0px">                    
+
+                                    <div class="col-md-7">
+                                        <h5>Is Main</h5>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="btn-group" id="is_main" data-toggle="buttons">
+                                            <label class="btn btn-default btn-on btn-sm <?php if($row->is_main == 1){echo 'active';}?>">
+                                            <input type="radio" value="1" name="is_main"<?php if($row->is_main == 1){echo 'checked';}?>><i class="fa fa-check" aria-hidden="true"></i></label>
+                                          
+                                            <label class="btn btn-default btn-off btn-sm <?php if($row->is_main == 0){echo 'active';}?>">
+                                            <input type="radio" value="0" name="is_main" <?php if($row->is_main == 0){echo 'checked';}?>><i class="fa fa-times" aria-hidden="true"></i></label>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>

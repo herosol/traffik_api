@@ -1,8 +1,8 @@
-<?= getBredcrum(ADMIN, array('#' => 'Stats And Statistics')); ?>
+<?= getBredcrum(ADMIN, array('#' => 'Corporate partners')); ?>
 <?= showMsg(); ?>
 <div class="row margin-bottom-10">
     <div class="col-md-6">
-        <h2 class="no-margin"><i class="entypo-window"></i> Update <strong>Stats And Statistics</strong></h2>
+        <h2 class="no-margin"><i class="entypo-window"></i> Update <strong>Corporate partners</strong></h2>
     </div>
     <div class="col-md-6 text-right">
         <!--        <a href="<?= base_url('admin/services'); ?>" class="btn btn-lg btn-default"><i class="fa fa-arrow-left"></i> Cancel</a>-->
@@ -65,8 +65,8 @@
                                 <select name="banner_button_link" id="banner_button_link" class="form-control" required>
                                     <option value=''>-- Select --</option>
                                     <?php $pages = get_pages();
-                                    foreach ($pages as $page) { ?>
-                                        <option value="<?= $page ?>" <?= ($row['banner_button_link'] == $page) ? 'selected' : '' ?>> <?= $page ?></option>
+                                    foreach ($pages as $index => $page) { ?>
+                                        <option value="<?= $index ?>" <?= ($row['banner_button_link'] == $index) ? 'selected' : '' ?>> <?= $page ?></option>
                                     <?php
                                     }
                                     ?>
@@ -92,9 +92,37 @@
             <h3>Section 3</h3>
             <div class="form-group">
                 <div class="row">
+                <div class="col-md-12">
+                        <div class="panel panel-primary" data-collapsed="0">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    Background Image
+                                </div>
+                                <div class="panel-options">
+                                    <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="max-width: 310px; height: 110px;" data-trigger="fileinput">
+                                        <img src="<?= !empty($row['image3']) ? getImageSrc(UPLOAD_PATH . "images/", $row['image3']) : 'http://placehold.it/3000x1000' ?>" alt="--">
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 320px; max-height: 160px; line-height: 6px;"></div>
+                                    <div>
+                                        <span class="btn btn-white btn-file">
+                                            <span class="fileinput-new">Select image</span>
+                                            <span class="fileinput-exists">Change</span>
+                                            <input type="file" name="image3" accept="image/*" <?php if (empty($row['image3'])) {echo 'required=""'; } ?>>
+                                        </span>
+                                        <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-12">
-                        <label for="sec3_main_heading<?=$i?>" class="control-label"> Main Heading <span class="symbol required">*</span></label>
-                        <input type="text" name="sec3_main_heading<?=$i?>" id="sec3_main_heading<?=$i?>" value="<?= $row['sec3_main_heading'.$i] ?>" class="form-control" required>
+                        <label for="sec3_main_heading" class="control-label"> Main Heading <span class="symbol required">*</span></label>
+                        <input type="text" name="sec3_main_heading" id="sec3_main_heading" value="<?= $row['sec3_main_heading'] ?>" class="form-control" required>
                         <br/>            
                         <div class="row">
                             <?php for($i = 1; $i <= 3; $i++):?>
