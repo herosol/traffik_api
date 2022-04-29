@@ -92,8 +92,8 @@ class Settings extends Admin_Controller
 
     function clear_cashe()
     {
-        has_access();
-        $this->admin->saveSettings(array('site_version'=>rand(1, 100)));
+        // has_access();
+        // $this->admin->saveSettings(array('site_version'=>rand(1, 100)));
         setMsg("success", "Successfully Cashe Cleared!");
         redirect(ADMIN . "/settings");
         exit;

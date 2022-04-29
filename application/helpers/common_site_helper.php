@@ -762,6 +762,28 @@ function get_state_name($key, $type = 'id', $default_text = "N/A")
     }
 }
 
+function get_state_by_id($id)
+{
+    global $CI;
+    $arr = $CI->master->getRow("states", array('id' => $id));
+    if ($arr) {
+        return $arr->name;
+    } else {
+        return 'N/A';
+    }
+}
+
+function get_organization_by_id($id)
+{
+    global $CI;
+    $arr = $CI->master->getRow("tags", array('id' => $id));
+    if ($arr) {
+        return $arr->title;
+    } else {
+        return 'N/A';
+    }
+}
+
 function get_cities_options($type, $selected = '', $state = NULL)
 {
     global $CI;

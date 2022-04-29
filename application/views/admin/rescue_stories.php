@@ -6,7 +6,7 @@
             <h2 class="no-margin"><i class="entypo-list"></i> Add/Update <strong>Rescue Story</strong></h2>
         </div>
         <div class="col-md-6 text-right">
-            <a href="<?php echo base_url(ADMIN . '/rescuestories'); ?>" class="btn btn-lg btn-default"><i class="fa fa-arrow-left"></i> Cancel</a>
+            <a href="<?php echo base_url(ADMIN . '/rescue_stories'); ?>" class="btn btn-lg btn-default"><i class="fa fa-arrow-left"></i> Cancel</a>
         </div>
     </div>
     <div>
@@ -193,7 +193,7 @@
             <h2 class="no-margin"><i class="entypo-list"></i> Manage <strong>Rescue Stories</strong></h2>
         </div>
          <div class="col-md-6 text-right">
-            <a href="<?= base_url(ADMIN . '/rescuestories/manage'); ?>" class="btn btn-lg btn-primary"><i class="fa fa-plus-circle"></i> Add New</a>
+            <a href="<?= base_url(ADMIN . '/rescue_stories/manage'); ?>" class="btn btn-lg btn-primary"><i class="fa fa-plus-circle"></i> Add New</a>
         </div>
     </div>
     <table class="table table-bordered datatable" id="table-1">
@@ -256,9 +256,9 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Action <span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-primary" role="menu">
-                                    <li><a href="<?= base_url(ADMIN); ?>/rescuestories/manage/<?= $blog->id; ?>">Edit</a></li>
+                                    <li><a href="<?= base_url(ADMIN); ?>/rescue_stories/manage/<?= $blog->id; ?>">Edit</a></li>
                                     <?php if(access(10)):?>
-                                        <li><a href="<?= base_url(ADMIN); ?>/rescuestories/delete/<?= $blog->id; ?>" onclick="return confirm('Are you sure?');">Delete</a></li>
+                                        <li><a href="<?= base_url(ADMIN); ?>/rescue_stories/delete/<?= $blog->id; ?>" onclick="return confirm('Are you sure?');">Delete</a></li>
                                     <?php endif?>
                                 </ul>
                             </div>
@@ -302,9 +302,9 @@
     $(document).on('click', '#add_category', function (event) {
             event.preventDefault();
             var cat_name=$("#cat_name").val();
-            console.log("<?php echo base_url('admin/rescuestories/add_category'); ?>");
+            console.log("<?php echo base_url('admin/rescue_stories/add_category'); ?>");
             $.ajax({
-                    url: "<?php echo base_url('admin/rescuestories/add_category'); ?>",
+                    url: "<?php echo base_url('admin/rescue_stories/add_category'); ?>",
                     data: {cat_name:cat_name },
                     type: "post",
                     async: false,

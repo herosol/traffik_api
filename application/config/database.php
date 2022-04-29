@@ -76,11 +76,9 @@ if ($_SERVER['HTTP_HOST'] != 'localhost') {
 	$db['default'] = array(
 		'dsn'	   => '',
 		'hostname' => 'mysql1003.mochahost.com',
-		// 'username' => 'herosol_saad',
 		'username' => 'herosol_saad2',
-		// 'password' => 'k4J!a7O4~l4Y',
 		'password' => ')#fGii+r_0;,',
-		'database' => 'herosols_traffik'
+		'database' => 'herosol_trafficsexreact'
 	);
 } else {
 	$db['default'] = array(

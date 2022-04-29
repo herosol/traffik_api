@@ -61,20 +61,20 @@
                     <span class="badge badge-info"></span>
                 </a>
             </li>
-            <li class="opened <?= ($this->uri->segment(2) == 'rescuestories') ? 'active' : '' ?>">
-                <a href="<?= site_url(ADMIN.'/rescuestories') ?>">
+            <li class="opened <?= ($this->uri->segment(2) == 'rescue_stories') ? 'active' : '' ?>">
+                <a href="<?= site_url(ADMIN.'/rescue_stories') ?>">
                     <i class="fa fa-file"></i>
                     <span class="title">Manage Rescue Stories</span>
                     <span class="badge badge-info"></span>
                 </a>
             </li>
-            <li class="opened <?= ($this->uri->segment(2) == 'news') ? 'active' : '' ?>">
+            <!-- <li class="opened <?= ($this->uri->segment(2) == 'news') ? 'active' : '' ?>">
                 <a href="<?= site_url(ADMIN.'/news') ?>">
                     <i class="fa fa-file"></i>
                     <span class="title">Manage News</span>
                     <span class="badge badge-info"></span>
                 </a>
-            </li>
+            </li> -->
             <!-- <li class="opened <?= ($this->uri->segment(2) == 'invoices') ? 'active' : '' ?>">
                 <a href="<?= site_url(ADMIN.'/invoices') ?>">
                     <i class="fa fa-file"></i>
@@ -90,6 +90,26 @@
                 </a>
             </li>
             
+            <li class=" <?= ($this->uri->segment(2) == 'national_directory_organizations') ? ' opened  active' : '' ?>">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-pagelines  "></i>
+                    <span class="title">National Directory Organizations</span>
+                </a>
+                <ul>
+                    <li class=" <?= ($this->uri->segment(3) == 'tags') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/tags') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Search Tags</span>
+                        </a>
+                    </li>
+                    <li class=" <?= ($this->uri->segment(3) == 'national_directory_organizations') ? ' active' : '' ?>">
+                        <a href="<?= site_url(ADMIN.'/national_directory_organizations') ?>">
+                            <i class="entypo-doc-text  "></i>
+                            <span class="title">Organizations</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class=" <?= ($this->uri->segment(2) == 'sitecontent' || $this->uri->segment(2) == 'preferences') ? ' opened  active' : '' ?>">
                 <a href="javascript:void(0)">
                     <i class="fa fa-pagelines  "></i>

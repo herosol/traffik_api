@@ -77,6 +77,7 @@ $route['api/our-sponsors']              = 'api/pages/our_sponsors';
 $route['api/donate-now']                = 'api/pages/donate_now';
 $route['api/donate-pay']                = 'api/pages/donate_pay_now';
 $route['api/near-events']               = 'api/pages/events_near_you';
+$route['api/search-nearby-events']      = 'api/pages/search_nearby_events';
 
 
 
@@ -91,3 +92,4 @@ $route['admin/delivery_proof/manage/(:any)'] = 'admin/delivery_proof/manage';
 $route['admin/meta-info/manage'] = 'admin/Meta_info/manage';
 $route['admin/meta-info/manage/(:any)'] = 'admin/Meta_info/manage/$1';
 $route['admin/meta-info/delete/(:any)'] = 'admin/Meta_info/delete/$1';
+$route['admin/settings/clear-cache'] = 'admin/settings/clear_cashe';

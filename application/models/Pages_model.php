@@ -58,6 +58,24 @@
  		$this->db->delete($this->table_name);
  		return $page_slug;	
  	}
+
+	function search_nearby_events($post)
+	{
+		if(!empty($post['state']))
+		{
+			$this->db->where(['state'=> $post['state']]);
+		}
+
+		if(!empty($post['zipcode']))
+		{
+			$this->db->where(['zipcode'=> $post['zipcode']]);
+		}
+
+		$this->db->from('events');
+		$this->db->order_by('id', 'desc');
+		$this->db->where(['status'=> 1]);
+		return $this->db->get()->result();
+	}
  }
 
 

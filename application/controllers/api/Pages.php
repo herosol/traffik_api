@@ -508,6 +508,7 @@ class Pages extends MY_Controller
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
             $this->data['events'] = $this->master->getRows('events', ['status'=> 1], '', '', 'DESC', 'id');
+            $this->data['states'] = states_by_country();
             http_response_code(200);
             echo json_encode($this->data);
         } 
@@ -516,6 +517,20 @@ class Pages extends MY_Controller
             http_response_code(404);
         }
         exit;
+    }
+
+    function search_nearby_events()
+    {
+        if($this->input->post())
+        {
+            $res = [];
+            $res['status'] = 0;
+            $post = html_escape($this->input->post());
+            $res['events'] = $this->page->search_nearby_events($post);
+            $res['status'] = 1;
+            echo json_encode($res);
+            exit;
+        }
     }
 
 }

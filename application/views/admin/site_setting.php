@@ -6,7 +6,7 @@
         <h2 class="no-margin"><i class="fa fa-cogs"></i> Site <strong>Settings</strong></h2>
     </div>
     <div class="col-md-6 text-right">
-        <a href="<?= site_url(ADMIN . '/settings/clear-cashe'); ?>" class="btn btn-lg btn-primary"><i class="fa fa-refresh"></i> Clear Cache</a>
+        <a href="<?= site_url(ADMIN . '/settings/clear-cache'); ?>" class="btn btn-lg btn-primary"><i class="fa fa-refresh"></i> Clear Cache</a>
     </div>
 </div>
 <hr>
@@ -43,8 +43,8 @@
             <hr class="hr-short">
             <div class="form-group">
                 <div class="col-md-12">
-                    <label class="control-label"> Facebook Link</label>
-                    <input type="text" name="site_facebook" value="<?php if (isset($adminsite_setting->site_facebook)) echo $adminsite_setting->site_facebook; ?>" class="form-control">
+                    <label class="control-label"> Skype ID</label>
+                    <input type="text" name="site_skype" value="<?php if (isset($adminsite_setting->site_skype)) echo $adminsite_setting->site_skype; ?>" class="form-control">
                 </div>
             </div>
             <div class="form-group">
@@ -53,28 +53,16 @@
                     <input type="text" name="site_twitter" value="<?php if (isset($adminsite_setting->site_twitter)) echo $adminsite_setting->site_twitter; ?>" class="form-control">
                 </div>
             </div>
-            <!-- <div class="form-group">
-                <div class="col-md-12">
-                    <label class="control-label"> Google Link</label>
-                <input type="text" name="site_google" value="<?php if (isset($adminsite_setting->site_google)) echo $adminsite_setting->site_google; ?>"  class="form-control">
-                </div>
-            </div> -->
             <div class="form-group">
                 <div class="col-md-12">
-                    <label class="control-label"> Instagram Link</label>
-                    <input type="text" name="site_instagram" value="<?php if (isset($adminsite_setting->site_instagram)) echo $adminsite_setting->site_instagram; ?>" class="form-control">
+                    <label class="control-label"> Whatsapp Number</label>
+                    <input type="text" name="site_whatsapp" value="<?php if (isset($adminsite_setting->site_whatsapp)) echo $adminsite_setting->site_whatsapp; ?>" class="form-control">
                 </div>
             </div>
-            <!-- <div class="form-group">
-                <div class="col-md-12">
-                    <label class="control-label"> LinkedIn Link</label>
-                    <input type="text" name="site_linkedin" value="<?php if (isset($adminsite_setting->site_linkedin)) echo $adminsite_setting->site_linkedin; ?>" class="form-control">
-                </div>
-            </div> -->
             <div class="form-group">
                 <div class="col-md-12">
-                    <label class="control-label"> Youtube Link</label>
-                    <input type="text" name="site_youtube" value="<?php if (isset($adminsite_setting->site_youtube)) echo $adminsite_setting->site_youtube; ?>" class="form-control">
+                    <label class="control-label"> Vimeo Link</label>
+                    <input type="text" name="site_v" value="<?php if (isset($adminsite_setting->site_v)) echo $adminsite_setting->site_v; ?>" class="form-control">
                 </div>
             </div>
 
