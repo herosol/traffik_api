@@ -104,6 +104,20 @@
                 </div>
             </div>
 
+            <h3> Organizations Card Last Heading </h3>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label for="last_detail" class="control-label"> Detail <span class="symbol required">*</span></label>
+                                <textarea name="last_detail" rows="3" class="form-control ckeditor" ><?= $row['last_detail'] ?></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label for="field-1" class="col-sm-2 control-label "></label>
                 <div class="col-sm-10">

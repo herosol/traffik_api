@@ -78,6 +78,8 @@ $route['api/donate-now']                = 'api/pages/donate_now';
 $route['api/donate-pay']                = 'api/pages/donate_pay_now';
 $route['api/near-events']               = 'api/pages/events_near_you';
 $route['api/search-nearby-events']      = 'api/pages/search_nearby_events';
+$route['api/search-organizations']      = 'api/pages/search_organizations';
+$route['api/clear-organizations-search']= 'api/pages/clear_organizations_search';
 
 
 

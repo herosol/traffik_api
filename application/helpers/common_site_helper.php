@@ -286,6 +286,14 @@ function new_messages()
     return intval($row->num_rows());
 }
 
+function check_organization_num($id)
+{
+    global $CI;
+    $CI->db->where(['status'=> 1, 'tag'=> $id]);
+    $row = $CI->db->get('national_directory_organizations');
+    return intval($row->num_rows());
+}
+
 function new_notifs()
 {
     global $CI;

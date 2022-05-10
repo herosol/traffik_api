@@ -262,6 +262,16 @@ class Pages extends MY_Controller
             $this->data['content'] = unserialize($data->code);
             $this->data['details'] = ($data->full_code);
             $this->data['meta_desc'] = json_decode($meta->content);
+            $tags = $this->master->get_data_rows('tags', ['status'=> 1]);
+            foreach($tags as $index => $t):
+                $tag_num = check_organization_num($t->id);
+                if($tag_num > 0)
+                {
+                    $t->num = $tag_num;
+                    $this->data['tags'][] = $t;
+                }
+            endforeach;
+            $this->data['organizations'] = $this->master->get_data_rows('national_directory_organizations', ['status'=> 1]);
             http_response_code(200);
             echo json_encode($this->data);
         } 
@@ -531,6 +541,30 @@ class Pages extends MY_Controller
             echo json_encode($res);
             exit;
         }
+    }
+
+    function search_organizations()
+    {
+        if($this->input->post())
+        {
+            $res = [];
+            $res['status'] = 0;
+            $post = html_escape($this->input->post());
+            $res['organizations'] = $this->page->search_organizations($post);
+            $res['status'] = 1;
+            echo json_encode($res);
+            exit;
+        }
+    }
+
+    function clear_organizations_search()
+    {
+        $res = [];
+        $res['status'] = 0;
+        $res['organizations'] = $this->master->get_data_rows('national_directory_organizations', ['status'=> 1]);
+        $res['status'] = 1;
+        echo json_encode($res);
+        exit;
     }
 
 }

@@ -76,6 +76,24 @@
 		$this->db->where(['status'=> 1]);
 		return $this->db->get()->result();
 	}
+
+	function search_organizations($post)
+	{
+		if(!empty($post['tag']))
+		{
+			$this->db->where(['tag'=> $post['tag']]);
+		}
+
+		if(!empty($post['zip']))
+		{
+			$this->db->where(['zipcode'=> $post['zip']]);
+		}
+
+		$this->db->from('national_directory_organizations');
+		$this->db->order_by('id', 'desc');
+		$this->db->where(['status'=> 1]);
+		return $this->db->get()->result();
+	}
  }
 
 
