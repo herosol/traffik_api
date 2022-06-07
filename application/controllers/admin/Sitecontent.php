@@ -957,6 +957,10 @@ class Sitecontent extends Admin_Controller
                 if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
 
                     $image = upload_file(UPLOAD_PATH.'images/', 'image'.$i);
+                    generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$image['file_name'],300,'thumb_');
+                    generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$image['file_name'],500,'500p_');
+                    generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$image['file_name'],700,'700p_');
+
                     if(!empty($image['file_name'])){
                         if(isset($content_row['image'.$i]))
                             $this->remove_file(UPLOAD_PATH."images/".$content_row['image'.$i]);
@@ -975,6 +979,7 @@ class Sitecontent extends Admin_Controller
         $this->data['row'] = unserialize($this->data['content']->code);
         $this->load->view(ADMIN . '/includes/siteMaster', $this->data);
     }
+
     function signin() {
         $this->data['enable_editor'] = TRUE;
         $this->data['pageView'] = ADMIN . '/site_signin';
@@ -988,6 +993,10 @@ class Sitecontent extends Admin_Controller
                 if (isset($_FILES["image".$i]["name"]) && $_FILES["image".$i]["name"] != "") {
 
                     $image = upload_file(UPLOAD_PATH.'images/', 'image'.$i);
+                    generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$image['file_name'],300,'thumb_');
+                    generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$image['file_name'],500,'500p_');
+                    generate_thumb(UPLOAD_PATH.'images/',UPLOAD_PATH.'images/',$image['file_name'],700,'700p_');
+
                     if(!empty($image['file_name'])){
                         if(isset($content_row['image'.$i]))
                             $this->remove_file(UPLOAD_PATH."images/".$content_row['image'.$i]);

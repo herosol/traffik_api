@@ -80,6 +80,12 @@ $route['api/near-events']               = 'api/pages/events_near_you';
 $route['api/search-nearby-events']      = 'api/pages/search_nearby_events';
 $route['api/search-organizations']      = 'api/pages/search_organizations';
 $route['api/clear-organizations-search']= 'api/pages/clear_organizations_search';
+$route['api/sign-up']                   = 'api/pages/sign_up';
+$route['api/sign-in']                   = 'api/pages/sign_in';
+
+//AUTHENTICATION
+$route['api/auth/create-account']       = 'api/auth/sign_up';
+$route['api/auth/sign-in-account']      = 'api/auth/sign_in';
 
 
 

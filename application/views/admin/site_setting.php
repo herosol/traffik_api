@@ -66,6 +66,22 @@
                 </div>
             </div>
 
+            <h3><i class="fa fa-bars"></i> Header Settings</h3>
+            <hr class="hr-short">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="control-label"> Header Donation Link <span class="symbol required"></span></label>
+                    <select name="site_header_donation_link" id="site_header_donation_link" class="form-control" required>
+                        <option value=''>-- Select --</option>
+                        <?php $pages = get_pages();
+                        foreach ($pages as $index => $page) { ?>
+                            <option value="<?= $index ?>" <?= ($adminsite_setting->site_header_donation_link == $index) ? 'selected' : '' ?>> <?= $page ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
             <h3><i class="fa fa-bars"></i> Footer Settings</h3>
             <hr class="hr-short">
             <div class="form-group">

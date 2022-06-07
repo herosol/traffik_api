@@ -54,6 +54,13 @@
                     <span class="badge badge-info"></span>
                 </a>
             </li>
+            <li class="opened <?= ($this->uri->segment(2) == 'members') ? 'active' : '' ?>">
+                <a href="<?= site_url(ADMIN.'/members') ?>">
+                    <i class="fa fa-file"></i>
+                    <span class="title">Manage Members</span>
+                    <span class="badge badge-info"></span>
+                </a>
+            </li>
             <li class="opened <?= ($this->uri->segment(2) == 'events') ? 'active' : '' ?>">
                 <a href="<?= site_url(ADMIN.'/events') ?>">
                     <i class="fa fa-file"></i>

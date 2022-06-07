@@ -58,19 +58,6 @@
                     </div>
                 </div>
             </div>
-            <h3>Form Section</h3>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="form_heading1" class="control-label">Individual Form Heading <span class="symbol required">*</span></label>
-                        <input type="text" name="form_heading1" id="form_heading1" value="<?= $row['form_heading1'] ?>" class="form-control" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="form_heading2" class="control-label">Vendor Form Heading <span class="symbol required">*</span></label>
-                        <input type="text" name="form_heading2" id="form_heading2" value="<?= $row['form_heading2'] ?>" class="form-control" required>
-                    </div>
-                </div>
-            </div>
             <div class="form-group">
                 <label for="field-1" class="col-sm-2 control-label "></label>
                 <div class="col-sm-10">

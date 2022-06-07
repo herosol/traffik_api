@@ -595,6 +595,7 @@ function get_order_status_label($status)
         return '<span class="badge red">Cancelled</span>';
     }
 }
+
 function get_proof_status_label($status)
 {
     if ($status == 'pending') {
@@ -721,6 +722,16 @@ function doEncode($string, $key = 'preciousprotection')
         $hash .= strrev(base_convert(dechex($ordStr + $ordKey), 16, 36));
     }
     return ($hash);
+}
+
+function get_member_active_status($status)
+{
+    if ($status == '0') {
+        return '<span class="badge red">In active</span>';
+    }
+    else if ($status == '1') {
+        return '<span class="badge green">Active</span>';
+    }
 }
 
 function doDecode($string, $key = 'preciousprotection')
